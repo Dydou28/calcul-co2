@@ -1,0 +1,47 @@
+
+  <main class="container-lg" role="main" style="margin-bottom: 150px">
+    <h1 style="margin-top: 3%;">{{ "signin.Login" | translate }}</h1>
+    <div class="row">
+      <div class="col-sm-6">
+          <h3 style="color: #f16e00">{{ "signin.glad" | translate }}</h3>
+          <form name="form"
+        [formGroup]="this.loginForm"
+          (ngSubmit)="f.form.valid && onSubmit()"
+          #f="ngForm"
+          novalidate>
+            <div class="form-group">
+              <label for="Email" class="is-required">{{ "signin.Email" | translate }}</label>
+              <input type="email" class="form-control" name="email"
+              formControlName="email"
+              required
+              email
+              placeholder="{{ 'signin.Email' | translate }}">
+            </div>
+            <div class="form-group">
+              <label for="Password" class="is-required">{{ 'signin.Password' | translate }}</label>
+              <input [type]="hide ? 'password' : 'text'" class="form-control"
+              name="password"
+              formControlName="password"
+              required>
+              <div class="">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1" (click)="changeHideVisi()">
+                <label class="form-check-label" for="exampleCheck1">{{ 'signin.See_pass' | translate }}</label>
+              </div>
+            </div>
+            <div>
+            </div>
+            <a style="font-weight: bold;" href="reset-password">{{ 'signin.Forgot_pass' | translate }}</a><br>
+            <button type="submit" class="btn btn-primary" value="sign_in">{{ "signin.Login" | translate }}</button>
+          </form>
+          <p *ngIf="errorResponse != ''" class="text-danger">
+            {{errorResponse}} <button style="margin-left: 15px;" *ngIf="emailVerif === true" class="btn btn-secondary btn-sm" (click)="sendVerifyEmail()">{{ 'signin.Verif_email' | translate }}</button>
+          </p>
+          <p *ngIf="msg != ''">{{msg}}</p>
+      </div>
+      <div class="col-sm-6">
+          <h3 style="color: #f16e00">{{ 'signin.First_visit' | translate }}</h3>
+          <h6>{{ 'signin.Access_signup' | translate }}</h6>
+          <a class="btn btn-secondary" routerLink="/register">{{ 'signin.Signup' | translate }}</a>
+      </div>
+    </div>
+  </main>

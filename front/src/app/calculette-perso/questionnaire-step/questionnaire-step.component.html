@@ -1,0 +1,42 @@
+<nav class="stepped-process" aria-label="Checkout process" *ngIf="currentStep !== 'home'">
+    <p class="float-start mt-2 me-2 fw-bold d-sm-none">Step</p>
+    <ol>
+      <li class="stepped-process-item" [ngClass]="currentStep === 'workplace' ? 'active' : ''">
+        <a class="stepped-process-link" href="/calculette-perso/questionnaire/workplace" title="{{'calcperso.onglet1' | translate}}">{{'calcperso.onglet1' | translate}}</a>
+      </li>
+      <li class="stepped-process-item" [ngClass]="currentStep === 'transport' ? 'active' : ''">
+        <a class="stepped-process-link"
+          [href]="calcPersoService.stepEnding['transport'] === true
+          || calcPersoService.stepEnding['numerique'] === true
+          || calcPersoService.stepEnding['alimentation'] === true
+          || calcPersoService.stepEnding['achat'] === true  ? '/calculette-perso/questionnaire/transport' :  '/calculette-perso/questionnaire/'+currentStep"
+          title="{{'calcperso.onglet2' | translate}}">
+          {{'calcperso.onglet2' | translate}}
+        </a>
+      </li>
+      <li class="stepped-process-item" [ngClass]="currentStep === 'numerique' ? 'active' : ''">
+        <a class="stepped-process-link" 
+          [href]="calcPersoService.stepEnding['numerique'] === true
+          || calcPersoService.stepEnding['alimentation'] === true
+          || calcPersoService.stepEnding['achat'] === true ? '/calculette-perso/questionnaire/numerique' :  '/calculette-perso/questionnaire/'+currentStep"
+          title="{{'calcperso.onglet3' | translate}}">
+            {{'calcperso.onglet3' | translate}}
+        </a>
+      </li>
+      <li class="stepped-process-item" [ngClass]="currentStep === 'alimentation' ? 'active' : ''">
+        <a class="stepped-process-link"
+          [href]="calcPersoService.stepEnding['alimentation'] === true
+          || calcPersoService.stepEnding['achat'] === true ? '/calculette-perso/questionnaire/alimentation' :  '/calculette-perso/questionnaire/'+currentStep"
+          title="{{'calcperso.onglet4' | translate}}">
+          {{'calcperso.onglet4' | translate}}
+        </a>
+      </li>
+      <li class="stepped-process-item" [ngClass]="currentStep === 'achat' ? 'active' : ''">
+        <a class="stepped-process-link"
+          [href]="calcPersoService.stepEnding['achat'] === true ? '/calculette-perso/questionnaire/achat' : '/calculette-perso/questionnaire/'+currentStep"
+          title="{{'calcperso.onglet5' | translate}}">
+          {{'calcperso.onglet5' | translate}}
+        </a>
+      </li>
+    </ol>
+</nav>

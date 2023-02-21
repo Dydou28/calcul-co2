@@ -1,0 +1,12 @@
+<app-questionnaire-step></app-questionnaire-step>
+<main class="container-lg" role="main" style="margin-bottom: 150px">
+    <div class="row">
+        <app-progressbar *ngIf=" ! this.router.url.startsWith('/calculette-perso/home')"></app-progressbar>
+        <div class="col-sm-8">
+            <router-outlet></router-outlet>
+        </div>
+        <div class="col-sm-4">
+            <app-conseils *ngIf=" ! this.router.url.startsWith('/calculette-perso/home')"></app-conseils>
+        </div>
+    </div>
+</main>

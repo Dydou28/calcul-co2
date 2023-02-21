@@ -1,0 +1,59 @@
+<main role="main" id="content" class="container my-5">
+    <div class="row">
+        <div class="col-md-8">
+            <form role="form" id="myForm" action="aff_AE.php" method="post"><input type="hidden" name="token" value="<?php echo $_SESSION['token']; ?>">
+                <div class="form-group">
+                    <h2>Afficher les données de votre Entité</h2>
+                    <div class="row">
+                        <div class="col-sm-6">
+                          <select class="form-select" id="aAE" name="aAE" style="margin-right: 15px;">
+                            <option selected value="Choix de votre AE">Choix de votre Entité</option>
+                            <option  *ngFor="let agence of agences; index as id" [value]="id">{{agence.label}}</option>
+                          </select>
+                        </div>
+                        <div class="col-sm-6">
+                          <label><button type="submit" class="btn btn-primary">accéder</button></label>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <form role="form" id="myForm" action="maj_AE.php" method="post" style="margin-top: 30px;"><input type="hidden" name="token" value="<?php echo $_SESSION['token']; ?>">
+                <div class="form-group">
+                    <h2>Mettre à jour les données de votre Entité</h2>
+                    <div class="row">
+                        <div class="col-sm-6">
+                          <select class="form-select" id="mAE" name="mAE" style="margin-right: 15px;">
+                            <option selected value="Choix de votre AE">Choix de votre Entité</option>
+                            <option  *ngFor="let agence of agences; index as id" [value]="id">{{agence.label}}</option>
+                          </select>
+                        </div>
+                        <div class="col-sm-6">
+                          <label><button type="submit" class="btn btn-primary">accéder</button></label>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <form role="form" id="myForm" action="add_AE.php" method="post" style="margin-top: 30px;"><input type="hidden" name="token" value="<?php echo $_SESSION['token']; ?>">
+                <div class="form-group">
+                    <h2>Ajouter votre Entité</h2>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" name="add_AE" id="add_AE" placeholder=" Nouvelle AE">
+                        </div>
+                        <div class="col-sm-6">
+                            <button type="submit" class="btn btn-primary">Créer</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>

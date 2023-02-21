@@ -1,0 +1,70 @@
+.custom-add-button{
+    position: relative;
+    border-radius: 25px;
+    left:50%;
+    transform: translate(-50%);
+
+}
+.material-symbols-outlined{
+    font-size: 30px;
+    font-weight: bold;
+}
+select, input{
+    margin-bottom: 20px;
+    margin-right: 2px;
+}
+label{
+    margin-right : 10px;
+    margin-bottom : 10px;
+}
+
+.modal-body h4{
+    color: #ff7900;
+    margin-top: 10px;
+}
+.modal-body input select{
+width: 250px;
+
+}
+.form-group{
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+.form-group label{
+    margin-bottom: 5px;
+}
+hr{
+    color : #f3f1f1;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+.subTitleParti{
+    color: #f16e00;
+}
+.titleParti{
+    color: grey;
+}
+.subTitleConseil{
+    color: #f16e00;
+}
+.titleConseil{
+    color: grey;
+}
+.form-check-label {
+    margin-left: 10px;
+}
+.form-range{
+    border:none;
+}
+li{
+    margin-bottom: 40px;
+}
+button{
+    margin-top: 20px;
+}
+.numDesc{
+    font-size: 110%;
+    font-weight: bold;
+    color: rgb(71, 71, 71);
+    margin-bottom: 0;
+}

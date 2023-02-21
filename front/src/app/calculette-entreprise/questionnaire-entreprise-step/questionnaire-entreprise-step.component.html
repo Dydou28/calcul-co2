@@ -1,0 +1,11 @@
+<nav class="stepped-process" aria-label="Checkout process">
+    <p class="float-start mt-2 me-2 fw-bold d-sm-none">Step</p>
+    <ol>
+      <li class="stepped-process-item" [ngClass]="currentStep === 'questionnaire-entreprise' ? 'active' : ''">
+        <a class="stepped-process-link" href="/calculette-entreprise/questionnaire-entreprise" title="{{'calcpro.onglet1' | translate}}">{{'calcpro.onglet1' | translate }}</a>
+      </li>
+      <li class="stepped-process-item" [ngClass]="currentStep === 'resultat-entreprise' ? 'active' : ''">
+        <a class="stepped-process-link" href="/calculette-entreprise/resultat-entreprise" title="{{'calcpro.onglet2' | translate}}">{{'calcpro.onglet2' | translate}}</a>
+      </li>
+    </ol>
+</nav>

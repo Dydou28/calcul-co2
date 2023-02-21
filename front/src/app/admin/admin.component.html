@@ -1,0 +1,22 @@
+
+  <div class="container">
+    <h3>Ajout du fichier source</h3>
+    <p>Format: <span  style="font-weight: bold;">EXCEL</span></p>
+    <div class="form-group">        
+      <input type="file" class="form-control" (change)="addfile($event)" placeholder="Upload file" accept=".csv,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">        
+    </div>
+    <button type="submit" class="btn btn-primary" (click)="openModal(fileModal)">Envoyer</button>
+    <button style="margin-left: 30px;" type="submit" class="btn btn-primary" (click)="exportSources()">Exporter les sources actuelles</button>
+    <p *ngIf="errorMessage != ''" style="color: red;">{{errorMessage}}</p>
+  </div>
+
+  <!-- Modal -->
+  <ng-template #fileModal let-modal>
+    <div class="modal-header" style="padding: 10px; margin: 15px;">
+      <h4 class="modal-title" id="exampleModalLabel">Etes-vous sûr de vouloir envoyer ce fichier ? il écrasera toutes les sources actuelles pour les remplacer</h4>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" (click)="modal.dismiss('Close click')">Fermer</button>
+      <button type="submit" class="btn btn-primary" (click)="sendFile()">Envoyer</button>
+    </div>
+  </ng-template>

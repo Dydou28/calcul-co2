@@ -1,0 +1,115 @@
+<h1 style="margin-top: 50px;">{{'calcperso.t1' | translate}}</h1>
+<p style="text-align:justify;">
+  {{'calcperso.p1.1' | translate}}<br><br>{{'calcperso.p1.2' | translate}} 
+  <strong>
+    {{'calcperso.p1.2.1' | translate}}
+  </strong>
+  {{'calcperso.p1.2.2' | translate}}
+</p>
+<p style="text-align:justify;">
+  {{'calcperso.p1.3.1' | translate}} 
+  <strong>
+    {{'calcperso.p1.3.2' | translate}}
+  </strong> {{'calcperso.p1.3.3' | translate}}
+  <strong>
+    {{'calcperso.p1.3.4' | translate}}
+  </strong>
+</p>                
+<br>
+<br>
+<h2>{{'calcperso.t2' | translate}}</h2>
+<p style="text-align:justify;">
+  {{'calcperso.p2.1.1' | translate}}
+  <a href="/environnement/ademe-a-quoi-sert-lagence-de-lenvironnement-et-de-la-maitrise-de-lenergie-193327">
+    <strong>
+      {{'calcperso.p2.1.2' | translate}}
+    </strong>
+  </a>
+  {{'calcperso.p2.1.3' | translate}}
+  <a href="/environnement/quels-gaz-accentuent-leffet-de-serre-193621">
+    <strong>
+      {{'calcperso.p2.1.4' | translate}}
+    </strong>
+  </a>
+  {{'calcperso.p2.1.5' | translate}}
+</p>
+<p style="text-align:justify;">
+  - <strong>
+    {{'calcperso.p2.2.1' | translate}}
+  </strong><br>
+  - <strong>
+    {{'calcperso.p2.2.2' | translate}}
+  </strong><br>
+  - <strong>
+    {{'calcperso.p2.2.3' | translate}}
+  </strong><br>
+  - {{'calcperso.p2.2.4' | translate}}<br>
+  - {{'calcperso.p2.2.5' | translate}}<br>
+  - {{'calcperso.p2.2.6' | translate}}
+</p>
+<p style="text-align:justify;">
+  {{'calcperso.p2.3.1' | translate}}
+  <strong>
+    {{'calcperso.p2.3.2' | translate}}
+  </strong>. 
+  {{'calcperso.p2.3.3' | translate}}
+</p>
+<br>
+<br>
+<h2 id="4769v">{{'calcperso.t3' | translate}}</h2>
+<p style="text-align:justify;">
+  {{'calcperso.p3.1.1' | translate}}
+  <strong>
+    {{'calcperso.p3.1.2' | translate}}
+  </strong> 
+  {{'calcperso.p3.1.3' | translate}}
+  <strong>
+    {{'calcperso.p3.1.4' | translate}}
+  </strong>,
+  {{'calcperso.p3.1.5' | translate}}
+</p>
+<br>
+<p style="margin-bottom: 40px; text-align:justify; text-justify: inter-word;">
+  <strong>
+    {{'calcperso.p4' | translate}}
+  </strong>
+</p>
+<h4>{{'calcperso.t4' | translate}}</h4>
+<p>
+  <strong >
+    {{'calcperso.p4.1.1' | translate}}
+  </strong> <br>
+- {{'calcperso.p4.1.2' | translate}}<br>
+- {{'calcperso.p4.1.3' | translate}}<br>
+- {{'calcperso.p4.1.4' | translate}}
+<br><br>
+<strong>
+  {{'calcperso.p4.2.1' | translate}}
+</strong>
+{{'calcperso.p4.2.2' | translate}}<br><br>
+<strong>
+  {{'calcperso.p4.3.1' | translate}} 
+</strong>
+{{'calcperso.p4.3.2' | translate}}
+</p>
+<br><br>
+<label>
+  <a type="button" id="edit" class="btn btn-primary btn-lg mx-auto" (click)="initNewBalance(questModal)">
+    {{'calcperso.b1' | translate}}
+  </a>
+</label>
+<a type="button" style="margin-left: 15px;" id="edit" class="btn btn-primary btn-lg" href="../perso/transi_gene.php">
+  {{'calcperso.b2' | translate}}
+</a>
+
+<!-- Modal -->
+<ng-template #questModal let-modal>
+  <div class="modal-header" style="padding: 10px; margin: 15px;">
+    <h4 class="modal-title" id="exampleModalLabel">{{'calcperso.homeModal' | translate}}</h4>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="modal.dismiss('Close click')">{{'calcperso.close' | translate}}</button>
+    <button type="submit" class="btn btn-primary" (click)="continue()">{{'calcperso.b3' | translate}}</button>
+    <button type="submit" class="btn btn-primary" (click)="newQuest()">{{'calcperso.b4' | translate}}</button>
+  </div>
+</ng-template>

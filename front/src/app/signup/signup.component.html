@@ -1,0 +1,101 @@
+
+<div class="SignupPage">
+    <div class=" h-100 align-items-center">
+      <div class="Absolute-Center is-Responsive col">
+        <form class="form-signin" action="" id="signupForm"
+            #f="ngForm" [formGroup]="registerForm" (ngSubmit)="f.form.valid && onSubmit()" novalidate>
+          <h1>{{"signup.creatAcount" | translate}}</h1>
+          <div class="form-group">
+            <label class="is-required" for="username">{{"signup.pseudo" | translate}}</label>
+            <input type="text" id="username" formControlName="username" class="form-control">
+            <div *ngIf="registerForm.get('username')?.invalid && 
+                registerForm.get('username')?.errors && 
+                (registerForm.get('username')?.dirty || registerForm.get('username')?.touched)">
+              <small class="text-danger"
+                *ngIf="registerForm.get('username')?.hasError('required')">
+                {{"signup.reqchamp" | translate}}
+              </small>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="is-required" for="last_name">{{"signup.name" | translate}}</label>
+            <input type="text" id="last_name" formControlName="last_name" class="form-control">
+            <div *ngIf="registerForm.get('last_name')?.invalid && 
+                registerForm.get('last_name')?.errors && 
+                (registerForm.get('last_name')?.dirty || registerForm.get('last_name')?.touched)">
+              <small class="text-danger"
+                *ngIf="registerForm.get('last_name')?.hasError('required')">
+                {{"signup.reqchamp" | translate}}
+              </small>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="is-required" for="first_name">{{"signup.fname" | translate}}</label>
+            <input type="text" id="first_name" formControlName="first_name" class="form-control">
+            <div *ngIf="registerForm.get('first_name')?.invalid && 
+                registerForm.get('first_name')?.errors && 
+                (registerForm.get('first_name')?.dirty || registerForm.get('first_name')?.touched)">
+              <small class="text-danger"
+                *ngIf="registerForm.get('first_name')?.hasError('required')">
+                {{"signup.reqchamp" | translate}}
+              </small>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="is-required" for="email">{{"signup.mail" | translate}}</label>
+            <input type="email" id="email" formControlName="email" class="form-control">
+            <div *ngIf="registerForm.get('email')?.invalid && 
+                registerForm.get('email')?.errors && 
+                (registerForm.get('email')?.dirty || registerForm.get('email')?.touched)">
+              <small class="text-danger"
+                *ngIf="registerForm.get('email')?.hasError('required')">
+                {{"signup.reqchamp" | translate}}
+              </small>
+              <small class="text-danger"
+                *ngIf="registerForm.get('email')?.hasError('email')">
+                {{"signup.reqformat" | translate}}
+              </small>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="is-required" for="password">{{"signup.mdp" | translate}}</label>
+            <input 
+            [type]="hide ? 'password' : 'text'"
+             id="password" formControlName="password" class="form-control">
+            <div class="">
+              <input type="checkbox" class="form-check-input" id="exampleCheck1" (click)="changeHideVisi()">
+              <label class="form-check-label" for="exampleCheck1">{{"signup.hidemdp" | translate}}</label>
+            </div>
+            <div *ngIf="registerForm.get('password')?.invalid && 
+                registerForm.get('password')?.errors && 
+                (registerForm.get('password')?.dirty || registerForm.get('password')?.touched)">
+              <small class="text-danger"
+                *ngIf="registerForm.get('password')?.hasError('required')">
+                {{"signup.reqchamp" | translate}}
+              </small>
+              <small class="text-danger"
+                *ngIf="registerForm.get('password')?.errors">
+                {{"signup.reqmdp" | translate}}
+              </small>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="is-required" for="password2">{{"signup.validmdp" | translate}}</label>
+            <input 
+            [type]="hide2 ? 'password' : 'text'"
+             id="password2" formControlName="password2" class="form-control">
+            <div class="">
+              <input type="checkbox" class="form-check-input" id="exampleCheck2" (click)="changeHideVisi2()">
+              <label class="form-check-label" for="exampleCheck2">{{"signup.hidemdp" | translate}}</label>
+            </div>
+          </div>
+          <div *ngIf="errorResponse != ''">
+            <p class="text-danger">
+              {{errorResponse}}
+            </p>
+          </div>
+          <button type="submit" class="btn btn-primary" value="sign_up">{{"signin.Signup" | translate}}</button>
+        </form>
+      </div>
+    </div>
+  </div>

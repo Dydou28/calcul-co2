@@ -1,0 +1,8 @@
+
+  <main class="container-lg" role="main" style="margin: 35px">
+    <h2 *ngIf="emailVerified === true">Votre adresse mail a été validé ! </h2>
+    <a *ngIf="emailVerified === true" href="login" class="btn btn-primary">Accès a la connexion</a>
+    <h3 *ngIf="emailVerified === false">Une erreur est arrivé, avez-vous bien cliqué sur le lien du dernier mail reçu ?</h3>
+    <button class="btn btn-primary btn-sm" *ngIf="emailVerified === false" (click)="sendVerifyEmail()">envoyer un<br>nouvel email</button>
+    <p style="margin: 10px;">{{sendEmailVerif}}</p>
+  </main>

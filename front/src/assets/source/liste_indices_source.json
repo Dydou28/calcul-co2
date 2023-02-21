@@ -1,0 +1,599 @@
+[
+    {
+     "category": "telework",
+     "value": 1.785,
+     "form_name": "none",
+     "masse": 0.001,
+     "temps": 3600,
+     "unity": "g CO2\/heure",
+     "source_link": "https:\/\/www.penteledata.net\/support\/data-usage-calculator",
+     "description": "WhatsApp \/ vidéo conférence"
+    },
+    {
+     "category": "telework",
+     "value": 227,
+     "form_name": "gaz",
+     "masse": 0.001,
+     "temps": 3600,
+     "unity": "g CO2 \/kWh",
+     "source_link": "https:\/\/www.economiedenergie.fr\/les-emissions-de-co2-par-energie\/",
+     "description": "Consommation de gaz chauffage"
+    },
+    {
+     "category": "telework",
+     "value": 324,
+     "form_name": "fioul",
+     "masse": 0.001,
+     "temps": 3600,
+     "unity": "g CO2 \/kWh",
+     "source_link": "https:\/\/www.economiedenergie.fr\/les-emissions-de-co2-par-energie\/",
+     "description": "Consommation de fioul chauffage"
+    },
+    {
+     "category": "telework",
+     "value": 147,
+     "form_name": "electricity",
+     "masse": 0.001,
+     "temps": 3600,
+     "unity": "g CO2 \/kWh",
+     "source_link": "https:\/\/www.economiedenergie.fr\/les-emissions-de-co2-par-energie\/",
+     "description": "Consommation électricité chauffage"
+    },
+    {
+     "category": "telework",
+     "value": 30,
+     "form_name": "wood",
+     "masse": 0.001,
+     "temps": 3600,
+     "unity": "g CO2 \/kWh",
+     "source_link": "https:\/\/www.economiedenergie.fr\/les-emissions-de-co2-par-energie\/",
+     "description": "Consommation bois chauffage"
+    },
+    {
+     "category": "telework",
+     "value": 4,
+     "form_name": "distanceWorkAirConditionner",
+     "masse": 1,
+     "temps": 3600,
+     "unity": "kg CO2 \/kWh",
+     "source_link": "https:\/\/mylittlecarbon.fr\/2021\/07\/23\/la-tentation-de-la-climatisation\/#:~:text=Car%20en%20France%2C%20si%20l,20%20kgCO2%20sur%20l'%C3%A9t%C3%A9.",
+     "description": "Consommation climatisation"
+    },
+    {
+     "category": "telework",
+     "value": 1.56,
+     "form_name": "singleOffice",
+     "masse": 1000,
+     "temps": 31536000,
+     "unity": "t CO2\/pers\/an",
+     "source_link": "https:\/\/www.architectes.org\/quel-est-le-poids-carbone-global-d-un-immeuble-de-bureaux-en-france",
+     "description": "Un espace de travail individuel, partagé, flex, open, space, peut émettre différemmen: on estime les émissios pour un bureau classique ou open space (en comptant 20m² par personne dans un batiment) à :"
+    },
+    {
+     "category": "telework",
+     "value": 1.092,
+     "form_name": "coworking",
+     "masse": 1000,
+     "temps": 31536000,
+     "unity": "t CO2\/pers\/an",
+     "source_link": "https:\/\/www.economie.gouv.fr\/files\/files\/directions_services\/cie\/publications\/documents\/fiche_3.pdf",
+     "description": "et en flex ou co-working (on ajoute un facteur 70% dans le calcul des occupants) :"
+    },
+    {
+     "category": "telework",
+     "value": 10.22,
+     "form_name": "none",
+     "masse": 0.001,
+     "unity": "g d'équivalent CO2",
+     "description": "Pour sa production, une feuille de papier émet :"
+    },
+    {
+     "category": "transport",
+     "value": 310,
+     "form_name": "national",
+     "masse": 1,
+     "unity": "kg de CO2",
+     "description": "(trajet national) Un aller-retour en avion Paris-Marseille émet :"
+    },
+    {
+     "category": "transport",
+     "value": 629,
+     "form_name": "moyen-courrier",
+     "masse": 1,
+     "unity": "kg de CO2",
+     "description": "(moyen courrier) Un aller retour dans le continent européen émet :"
+    },
+    {
+     "category": "transport",
+     "value": 2.47,
+     "form_name": "long-courrier",
+     "masse": 1000,
+     "unity": "t de CO2",
+     "description": "(long courrier) Un aller retour Paris-New York émet :"
+    },
+    {
+     "category": "transport",
+     "value": 1.9,
+     "form_name": "train",
+     "masse": 0.001,
+     "unity": "g de CO2",
+     "description": "TGV INOUI, TGV Lyria, OUIGO"
+    },
+    {
+     "category": "transport",
+     "value": 5.7,
+     "form_name": "none",
+     "masse": 0.001,
+     "unity": "g de CO2",
+     "description": "Intercités"
+    },
+    {
+     "category": "transport",
+     "value": 10.1,
+     "form_name": "eurostar",
+     "masse": 0.001,
+     "unity": "g de CO2",
+     "description": "Eurostar"
+    },
+    {
+     "category": "transport",
+     "value": 13.7,
+     "form_name": "thalys",
+     "masse": 0.001,
+     "unity": "g de CO2",
+     "description": "Thalys"
+    },
+    {
+     "category": "transport",
+     "value": 5.2,
+     "form_name": "none",
+     "masse": 0.001,
+     "unity": "g de CO2",
+     "description": "Gala"
+    },
+    {
+     "category": "transport",
+     "value": 8.1,
+     "form_name": "none",
+     "masse": 0.001,
+     "unity": "g de CO2",
+     "description": "Alleo"
+    },
+    {
+     "category": "transport",
+     "value": 4.5,
+     "form_name": "subway",
+     "masse": 0.001,
+     "unity": "g de CO2",
+     "description": "Translien \/ RER"
+    },
+    {
+     "category": "transport",
+     "value": 26.5,
+     "form_name": "ter",
+     "masse": 0.001,
+     "unity": "g de CO2",
+     "description": "TER"
+    },
+    {
+     "category": "transport",
+     "value": 168,
+     "form_name": "moto",
+     "masse": 0.001,
+     "unity": "g de CO2\/km",
+     "source_link": "https:\/\/www.bilans-ges.ademe.fr\/documentation\/UPLOAD_DOC_FR\/index.htm?routier2.htm",
+     "description": "Un trajet en moto (600 cc) émet en moyenne :"
+    },
+    {
+     "category": "transport",
+     "value": 62,
+     "form_name": "scooter",
+     "masse": 0.001,
+     "unity": "g de CO2\/km",
+     "source_link": "https:\/\/www.bilans-ges.ademe.fr\/documentation\/UPLOAD_DOC_FR\/index.htm?routier2.htm",
+     "description": "Un trajet en scooter émet en moyenne"
+    },
+    {
+     "category": "transport",
+     "value": 193,
+     "form_name": "diesel",
+     "masse": 0.001,
+     "unity": "g de C02\/km",
+     "description": "Pour une voiture Diesel"
+    },
+    {
+     "category": "transport",
+     "value": 202,
+     "form_name": "essence",
+     "masse": 0.001,
+     "unity": "g de C02\/km",
+     "description": "Pour une voiture Essence"
+    },
+    {
+     "category": "transport",
+     "value": 196,
+     "form_name": "gnv",
+     "masse": 0.001,
+     "unity": "g de C02\/km",
+     "description": "Pour une voiture GNV"
+    },
+    {
+     "category": "transport",
+     "value": 192,
+     "form_name": "gpl",
+     "masse": 0.001,
+     "unity": "g de C02\/km",
+     "description": "Pour une voiture GPL "
+    },
+    {
+     "category": "transport",
+     "value": 183,
+     "form_name": "e85",
+     "masse": 0.001,
+     "unity": "g de C02\/km",
+     "description": "Pour une voiture E85"
+    },
+    {
+     "category": "transport",
+     "value": 140,
+     "form_name": "hybridR",
+     "masse": 0.001,
+     "unity": "g de C02\/km",
+     "description": "Pour une voiture Hybride rechargeable"
+    },
+    {
+     "category": "transport",
+     "value": 103,
+     "form_name": "hybrid",
+     "masse": 0.001,
+     "unity": "g de C02\/km",
+     "description": "Pour une voiture Hybride Electrique avec prolongateur d'autonomie"
+    },
+    {
+     "category": "transport",
+     "value": 66,
+     "form_name": "electric ",
+     "masse": 0.001,
+     "unity": "g de C02\/km",
+     "source_link": "https:\/\/www.bilans-ges.ademe.fr\/documentation\/UPLOAD_DOC_FR\/index.htm?routier2.htm",
+     "description": "Pour une voiture Electrique"
+    },
+    {
+     "category": "alimentation",
+     "value": 85.7,
+     "masse": 1,
+     "temps": 2628000,
+     "unity": "kg de CO2\/pers\/mois",
+     "source_link": "https:\/\/www.bilans-ges.ademe.fr\/documentation\/UPLOAD_DOC_FR\/index.htm?repas.htm",
+     "description": "Un régime alimentaire \"Fléxitarien\" émet :"
+    },
+    {
+     "category": "alimentation",
+     "value": 136,
+     "masse": 1,
+     "temps": 2628000,
+     "unity": "kg de CO2\/pers\/mois",
+     "description": "Le regime alimentaire \"classique\" émet :"
+    },
+    {
+     "category": "alimentation",
+     "value": 30,
+     "form_name": "cafeMachine",
+     "masse": 0.001,
+     "unity": "g de CO2",
+     "description": "Une cafetière maison émet :"
+    },
+    {
+     "category": "alimentation",
+     "value": 150,
+     "form_name": "cafePasMachine",
+     "masse": 0.001,
+     "unity": "g de CO2",
+     "description": "Une machine à café (capsule) émet pour une tasse :"
+    },
+    {
+     "category": "achat",
+     "value": 1.1,
+     "form_name": "nbLivre",
+     "masse": 0.001,
+     "unity": "g de CO2",
+     "source_link": "https:\/\/www.bilans-ges.ademe.fr\/fr\/basecarbone\/donnees-consulter\/liste-element\/categorie\/295",
+     "description": "L'achat d'un livre émet en moyenne"
+    },
+    {
+     "category": "achat",
+     "value": 367,
+     "form_name": "nbFourniture",
+     "masse": 0.001,
+     "unity": "g de CO2 \/ €",
+     "source_link": "https:\/\/www.bilans-ges.ademe.fr\/fr\/basecarbone\/donnees-consulter\/liste-element\/categorie\/295",
+     "description": "L'achat de stylos et fourniture de bureau émet en moyenne"
+    },
+    {
+     "category": "achat",
+     "value": 110,
+     "form_name": "prixConseils",
+     "masse": 0.001,
+     "unity": "g de CO2 \/ €",
+     "source_link": "https:\/\/www.bilans-ges.ademe.fr\/fr\/basecarbone\/donnees-consulter\/liste-element\/categorie\/295",
+     "description": "La prestations de conseil (hors déplacement) émet en moyenne"
+    },
+    {
+     "category": "achat",
+     "value": 220,
+     "form_name": "donsAsso",
+     "masse": 0.001,
+     "unity": "g de CO2 \/ €",
+     "source_link": "https:\/\/www.bilans-ges.ademe.fr\/fr\/basecarbone\/donnees-consulter\/liste-element\/categorie\/295",
+     "description": "Les associations ou activités sportives, culturelles émets en moyenne"
+    },
+    {
+     "category": "achat",
+     "value": 310,
+     "form_name": "prixComService",
+     "masse": 0.001,
+     "unity": "g de CO2 \/ €",
+     "source_link": "https:\/\/www.bilans-ges.ademe.fr\/fr\/basecarbone\/donnees-consulter\/liste-element\/categorie\/295",
+     "description": "L'achat de services de communication (film, enrengidtrement sonores, tv, radio…)"
+    },
+    {
+     "category": "numerique",
+     "value": 0.645,
+     "masse": 0.001,
+     "temps": 3600,
+     "unity": "g de CO2 \/ heure",
+     "source_link": "https:\/\/www.penteledata.net\/support\/data-usage-calculator",
+     "description": "Une heure de surf web émet"
+    },
+    {
+     "category": "numerique",
+     "value": 11.8,
+     "masse": 0.001,
+     "temps": 3600,
+     "unity": "g de CO2 \/ heure",
+     "source_link": "https:\/\/www.penteledata.net\/support\/data-usage-calculator",
+     "description": "Une heure de visio conférence émet "
+    },
+    {
+     "category": "numerique",
+     "value": 25,
+     "form_name": "smartphone",
+     "masse": 1,
+     "unity": "kg de CO2",
+     "source_link": "https:\/\/www.bilans-ges.ademe.fr\/documentation\/UPLOAD_DOC_FR\/index.htm?ordinateurs_et_equuipements_pe.htm",
+     "description": "Acheter un smartphone neuf émet "
+    },
+    {
+     "category": "numerique",
+     "value": 169,
+     "form_name": "laptop",
+     "masse": 1,
+     "unity": "kg de CO2",
+     "source_link": "https:\/\/www.bilans-ges.ademe.fr\/documentation\/UPLOAD_DOC_FR\/index.htm?ordinateurs_et_equuipements_pe.htm",
+     "description": "Acheter un pc portable neuf émet"
+    },
+    {
+     "category": "numerique",
+     "value": 189,
+     "form_name": "desktop",
+     "masse": 1,
+     "unity": "kg de CO2",
+     "source_link": "https:\/\/www.bilans-ges.ademe.fr\/documentation\/UPLOAD_DOC_FR\/index.htm?ordinateurs_et_equuipements_pe.htm",
+     "description": "Acheter un pc fixe neuf émet"
+    },
+    {
+     "category": "numerique",
+     "value": 394,
+     "form_name": "gamer",
+     "masse": 1,
+     "unity": "kg de CO2",
+     "source_link": "https:\/\/www.bilans-ges.ademe.fr\/documentation\/UPLOAD_DOC_FR\/index.htm?ordinateurs_et_equuipements_pe.htm",
+     "description": "Acheter un pc gamer neuf émet"
+    },
+    {
+     "category": "numerique",
+     "value": 106,
+     "form_name": "printerj",
+     "masse": 1,
+     "unity": "kg de CO2",
+     "source_link": "https:\/\/www.bilans-ges.ademe.fr\/documentation\/UPLOAD_DOC_FR\/index.htm?ordinateurs_et_equuipements_pe.htm",
+     "description": "Acheter une nouvelle imprimante émet (imprimante jet d'encre)"
+    },
+    {
+     "category": "numerique",
+     "value": 191,
+     "form_name": "printerl",
+     "masse": 1,
+     "unity": "kg de CO2",
+     "source_link": "https:\/\/www.bilans-ges.ademe.fr\/documentation\/UPLOAD_DOC_FR\/index.htm?ordinateurs_et_equuipements_pe.htm",
+     "description": "Acheter une nouvelle imprimante émet (imprimante laser)"
+    },
+    {
+     "category": "numerique",
+     "value": 225,
+     "form_name": "screen",
+     "masse": 1,
+     "unity": "kg de CO2",
+     "source_link": "https:\/\/www.bilans-ges.ademe.fr\/documentation\/UPLOAD_DOC_FR\/index.htm?ordinateurs_et_equuipements_pe.htm",
+     "description": "Acheter un nouvel écran d'ordinateur émet"
+    },
+    {
+     "category": "numerique",
+     "value": 1.042,
+     "form_name": "rtc",
+     "masse": 1,
+     "temps": 31536000,
+     "unity": "kg de CO2\/an",
+     "source_link": "https:\/\/www.rte-france.com\/eco2mix\/les-emissions-de-co2-par-kwh-produit-en-france",
+     "description": "L'utilisation du réseau par RTC émet en moyenne"
+    },
+    {
+     "category": "numerique",
+     "value": 0.88,
+     "form_name": "adsl",
+     "masse": 1,
+     "temps": 31536000,
+     "unity": "kg de CO2\/an",
+     "source_link": "https:\/\/www.rte-france.com\/eco2mix\/les-emissions-de-co2-par-kwh-produit-en-france",
+     "description": "L'utilisation du réseau par l'ADSL émet en moyenne"
+    },
+    {
+     "category": "numerique",
+     "value": 0.275,
+     "form_name": "fibre",
+     "masse": 1,
+     "temps": 31536000,
+     "unity": "kg de CO2\/an",
+     "source_link": "https:\/\/www.rte-france.com\/eco2mix\/les-emissions-de-co2-par-kwh-produit-en-france",
+     "description": "L'utilisation du réseau par la fibre émet en moyenne"
+    },
+    {
+     "category": "numerique",
+     "value": 2.75,
+     "form_name": "datamobile",
+     "masse": 1,
+     "unity": "kg de CO2",
+     "source_link": "https:\/\/www.rte-france.com\/eco2mix\/les-emissions-de-co2-par-kwh-produit-en-france",
+     "description": "L'utilisation du réseau mobile émet en moyenne"
+    },
+    {
+     "category": "telework",
+     "value": 6.9,
+     "form_name": "hotelNuitNb",
+     "masse": 1,
+     "unity": "kg de CO2",
+     "source_link": "https:\/\/www.consoglobe.com\/impact-ecologique-d-une-nuit-d-hotel-cg",
+     "description": "Une nuit dans un hotel classique émet"
+    },
+    {
+     "category": "seminaire",
+     "value": 5.5,
+     "masse": 1,
+     "unity": "kg de CO2 par unité",
+     "source_link": "https:\/\/www.bilans-ges.ademe.fr\/fr\/basecarbone\/donnees-consulter\/liste-element\/categorie\/295",
+     "description": "L'achat de tshirt émet en moyenne"
+    },
+    {
+     "category": "seminaire",
+     "value": 917,
+     "masse": 0.001,
+     "unity": "g de CO2 par €",
+     "source_link": "https:\/\/www.bilans-ges.ademe.fr\/fr\/basecarbone\/donnees-consulter\/liste-element\/categorie\/461",
+     "description": "l'achat d goodies électroniques émets en moyenne"
+    },
+    {
+     "category": "seminaire",
+     "value": 367,
+     "masse": 0.001,
+     "unity": "g de CO2 par €",
+     "source_link": "https:\/\/www.bilans-ges.ademe.fr\/fr\/basecarbone\/donnees-consulter\/liste-element\/categorie\/295",
+     "description": "L'achat tout autres goodies émets en moyenne"
+    },
+    {
+     "category": "seminaire",
+     "value": 393,
+     "masse": 0.001,
+     "unity": "g de C02\/Litre",
+     "source_link": "https:\/\/www.bilans-ges.ademe.fr\/fr\/basecarbone\/donnees-consulter\/liste-element\/categorie\/295",
+     "description": "L'achat d'une bouteilles d'eau émet en moyenne"
+    },
+    {
+     "category": "alimentation",
+     "value": 137.39,
+     "form_name": "viandeRouge",
+     "masse": 0.001,
+     "unity": "g de CO2",
+     "source_link": "https:\/\/bilans-ges.ademe.fr\/documentation\/UPLOAD_DOC_FR\/index.htm?repas.htm",
+     "description": "la consommation d'un plats à base de viandes rouges émet en moyenne"
+    },
+    {
+     "category": "alimentation",
+     "value": 24.62,
+     "form_name": "viandeBlanche",
+     "masse": 0.001,
+     "unity": "g de CO2",
+     "source_link": "https:\/\/bilans-ges.ademe.fr\/documentation\/UPLOAD_DOC_FR\/index.htm?repas.htm",
+     "description": "la consommation d'un plats à base de viandes blanches émet en moyenne"
+    },
+    {
+     "category": "alimentation",
+     "value": 14.22,
+     "form_name": "fruitsSaison",
+     "masse": 0.001,
+     "unity": "g de CO2",
+     "source_link": "https:\/\/bilans-ges.ademe.fr\/documentation\/UPLOAD_DOC_FR\/index.htm?repas.htm",
+     "description": "la consommation de fruit de saison émmet en moyenne "
+    },
+    {
+     "category": "alimentation",
+     "value": 14.22,
+     "form_name": "fruitsHorsSaison",
+     "masse": 0.001,
+     "unity": "g de CO2",
+     "source_link": "https:\/\/bilans-ges.ademe.fr\/documentation\/UPLOAD_DOC_FR\/index.htm?repas.htm",
+     "description": "la consommation de fruit hors saison émmet en moyenne "
+    },
+    {
+     "category": "alimentation",
+     "value": 2.11,
+     "form_name": "lait",
+     "masse": 0.001,
+     "unity": "g de CO2",
+     "source_link": "https:\/\/bilans-ges.ademe.fr\/documentation\/UPLOAD_DOC_FR\/index.htm?repas.htm",
+     "description": "la consommation de lait émet en moyenne"
+    },
+    {
+     "category": "alimentation",
+     "value": 66.4,
+     "form_name": "fromage",
+     "masse": 0.001,
+     "unity": "g de CO2",
+     "source_link": "https:\/\/bilans-ges.ademe.fr\/documentation\/UPLOAD_DOC_FR\/index.htm?repas.htm",
+     "description": "la consommation de frommage émet en moyenne"
+    },
+    {
+     "category": "alimentation",
+     "value": 83.94,
+     "form_name": "yaourts",
+     "masse": 0.001,
+     "unity": "g de CO2",
+     "source_link": "https:\/\/bilans-ges.ademe.fr\/documentation\/UPLOAD_DOC_FR\/index.htm?repas.htm",
+     "description": "la consommation de yaourt émet en moyenne"
+    },
+    {
+     "category": "alimentation",
+     "value": 21.7,
+     "form_name": "creme",
+     "masse": 0.001,
+     "unity": "g de CO2",
+     "source_link": "https:\/\/bilans-ges.ademe.fr\/documentation\/UPLOAD_DOC_FR\/index.htm?repas.htm",
+     "description": "la consommation de crème dessert émet en moyenne"
+    },
+    {
+     "category": "alimentation",
+     "value": 421.2,
+     "form_name": "nbRepasVegan",
+     "masse": 0.001,
+     "unity": "g de CO2",
+     "source_link": "https:\/\/bilans-ges.ademe.fr\/documentation\/UPLOAD_DOC_FR\/index.htm?repas.htm",
+     "description": "la consommation de repas vegan émet en moyenne"
+    },
+    {
+     "category": "alimentation",
+     "value": 74.91,
+     "form_name": "poisson",
+     "masse": 0.001,
+     "unity": "g de CO2",
+     "source_link": "https:\/\/bilans-ges.ademe.fr\/documentation\/UPLOAD_DOC_FR\/index.htm?repas.htm",
+     "description": "la consommation de poisson émet en moyenne"
+    },
+    {
+     "category": "alimentation",
+     "value": 5.62,
+     "form_name": "nbChoco",
+     "masse": 0.001,
+     "unity": "g de CO2",
+     "source_link": "https:\/\/bilans-ges.ademe.fr\/documentation\/UPLOAD_DOC_FR\/index.htm?repas.htm",
+     "description": "la consommation de Confiserie et chocolat émet en moyenne"
+    }
+   ]

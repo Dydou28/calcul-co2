@@ -1,0 +1,245 @@
+<main class="container-lg" role="main" style="margin-bottom: 150px">
+  <div class="row">
+    <h2 class="titleParti" style="margin-top: 5%;">{{'calcpro.title' | translate}}</h2>
+    <div class="col-sm-8">
+      <form name="form" [formGroup]="this.calcproForm" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+        <div class="form-group">
+          <label for="nom_entreprise">{{'calcpro.label1' | translate}}</label>
+          <input type="text" class="form-control" id="nom_entreprise" name="nom_entreprise" formControlName="nom_entreprise"  placeholder="Orange sas">
+        </div>
+        <div class="row">
+          <div class="form-group col-md-6">
+            <label for="nom_contact">{{'calcpro.label2' | translate}}</label>
+            <input type="text" class="form-control" id="nom_contact" name="nom_contact" formControlName="nom_contact" placeholder="Mr John">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputEmail4">{{'calcpro.label3' | translate}}</label>
+            <input type="email" class="form-control" id="inputEmail" name="inputEmail" formControlName="inputEmail" placeholder="john@orange.com">
+          </div> 
+        </div>
+        <div class="form-group">
+          <label for="inputAddress">{{'calcpro.label4' | translate}}</label>
+          <input type="text" class="form-control" id="inputAddress" name="inputAddress" formControlName="inputAddress" placeholder="1234 Main St">
+        </div>
+        <div class="form-group">
+          <label for="inputAddress2">{{'calcpro.label5' | translate}}</label>
+          <input type="text" class="form-control" id="inputAddress2" name="inputAddress2" formControlName="inputAddress2" placeholder="appartement, escalier, étage, ... ">
+        </div>
+        <div class="row last ">
+          <div class="form-group col-md-6">
+            <label for="inputCity">{{'calcpro.label6' | translate}}</label>
+            <input type="text" class="form-control"  id="inputCity" name="inputCity" formControlName="inputCity" placeholder="Paris">
+          </div>
+          <div class="form-group col-md-4">
+            <label for="inputState">{{'calcpro.label7' | translate}}</label>
+            <input type='text' id="inputState" name="inputState" formControlName="inputState" class="form-control" placeholder="France">
+          </div>
+          <div class="form-group col-md-2" style="margin-bottom: 20px">
+            <label for="inputZip">{{'calcpro.label8' | translate}}</label>
+            <input type="number" class="form-control" id="inputZip" name="inputZip" formControlName="inputZip" placeholder="75005">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="teletravail_intro">{{'calcpro.label10' | translate}}</label>
+        </div>
+        <div class="row">
+          <div class="form-group col-md-4 ">
+            <label for="nb_salaries" style="color:orange">{{'calcpro.label11' | translate}}</label>
+            <input type="number" class="form-control placeholder_orange" style="color:orange" id="nb_salaries" name="nb_salaries" formControlName="nb_salaries" placeholder = "238">
+          </div>
+        </div>  
+        <div class="row">
+          <div class="form-group col-md-3 ">
+            <label for="pourc_teletravailleurs">{{'calcpro.label12' | translate}}</label>
+            <input type="number" class="form-control" id="pourc_teletravailleurs" name="pourc_teletravailleurs" formControlName="pourc_teletravailleurs"  placeholder="100">
+          </div>
+          <div class="form-group col-md-3">
+            <label for="nb_jours_teletravail">{{'calcpro.label13' | translate}}</label>
+            <input type="number" class="form-control" id="nb_jours_teletravail" name="nb_jours_teletravail" formControlName="nb_jours_teletravail"  placeholder = "8">
+          </div>
+          <div class="form-group col-md-3">
+            <label for="distance_dom_travail">{{'calcpro.label14' | translate}}</label>
+            <input type="number" class="form-control" id="distance_dom_travail" name="distance_dom_travail" formControlName="distance_dom_travail"  placeholder ="30">
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-md-3">
+            <label for="part_voiture">{{'calcpro.label15' | translate}}</label>
+            <input type="number" class="form-control" id="part_voiture"  name="part_voiture" formControlName="part_voiture"  placeholder="80">
+          </div>
+          <div class="form-group col-md-3">
+            <label for="part_commun">{{'calcpro.label16' | translate}}</label>
+            <input type="number" class="form-control" id="part_commun"  name="part_commun" formControlName="part_commun"  placeholder = "16">
+          </div>
+          <div class="form-group col-md-3">
+            <label for="part_2roues">{{'calcpro.label17' | translate}}</label>
+            <input type="number" class="form-control" id="part_2roues" name="part_2roues" formControlName="nom_contact"  placeholder ="3">
+          </div>
+          <div class="form-group col-md-3">
+            <label for="part_doux">{{'calcpro.label18' | translate}}</label>
+            <input type="number" class="form-control" id="part_doux" name="part_doux" formControlName="part_doux"  placeholder ="1">
+          </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-md-2">
+              <label for="dont_diesel">{{'calcpro.label19' | translate}}</label>
+              <input type="number" class="form-control" id="dont_diesel"  name="dont_diesel" formControlName="dont_diesel" placeholder="60">
+            </div>
+            <div class="form-group col-md-2">
+              <label for="dont_essence">{{'calcpro.label20' | translate}}</label>
+              <input type="number" class="form-control" id="dont_essence"  name="dont_essence" formControlName="dont_essence"  placeholder = "30">
+            </div>
+            <div class="form-group col-md-2">
+              <label for="dont_hybride">{{'calcpro.label21' | translate}}</label>
+              <input type="number" class="form-control" id="dont_hybride" name="dont_hybride" formControlName="dont_hybride"  placeholder ="5">
+            </div>
+            <div class="form-group col-md-2">
+              <label for="dont_electrique">{{'calcpro.label22' | translate}}</label>
+              <input type="number" class="form-control" id="dont_electrique" name="dont_electrique" formControlName="nom_contact" placeholder ="5">
+            </div>
+          </div>
+          <div class="row last">
+            <div class="form-group col-md-3">
+            <label for="vitesse_moyenne">{{'calcpro.label23' | translate}}</label>
+            <input type="number" class="form-control" id="vitesse_moyenne" name="vitesse_moyenne" formControlName="nom_contact"  placeholder="60">
+          </div>
+          <div class="form-group col-md-3">
+            <label for="temps_transport">{{'calcpro.label24' | translate}}</label>
+            <input type="number" class="form-control" id="temps_transport" name="temps_transport" formControlName="nom_contact"  placeholder = "40">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="reunions_intro">{{'calcpro.label25' | translate}}</label>
+        </div>
+        <div class="row last">
+          <div class="form-group col-md-3">
+            <label for="nb_reunions">{{'calcpro.label26' | translate}}</label>
+            <input type="number" class="form-control" id="nb_reunions"  name="nb_reunions" formControlName="nom_contact"   placeholder="4">
+          </div>
+          <div class="form-group col-md-3">
+            <label for="nb_participants">{{'calcpro.label27' | translate}}</label>
+            <input type="number" class="form-control" id="nb_participants"  name="nb_participants" formControlName="nb_participants"   placeholder = "6">
+          </div>
+          <div class="form-group col-md-3">
+            <label for="distance_reunion">{{'calcpro.label28' | translate}}</label>
+            <input type="number" class="form-control" id="distance_reunion"  name="distance_reunion" formControlName="distance_reunion"   placeholder ="30">
+          </div>
+          
+        </div>
+        <div class="form-group">
+          <label for="flotte_intro">{{'calcpro.label29' | translate}}</label>
+        </div>
+        <div class="row last">
+          <div class="form-group col-md-4">
+            <label for="nb_vehicules" style="color:orange">{{'calcpro.label30' | translate}}</label>
+            <input type="number" class="form-control placeholder_orange" style="color:orange" id="nb_vehicules" name="nb_vehicules" formControlName="nb_vehicules"   placeholder="combien de véhicules d'entreprise">
+          </div>
+          <div class="form-group col-md-4">
+            <label for="nb_km">{{'calcpro.label31' | translate}}</label>
+            <input type="number" class="form-control" id="nb_km" name="nb_km" formControlName="nb_km"  placeholder = "500">
+          </div>
+          
+        </div>
+        <div class="form-group">
+          <label for="demat_intro">{{'calcpro.label32' | translate}}</label>
+        </div>
+        <div class="row last">
+          <div class="form-group col-md-8">
+            <label for="nb_pages">{{'calcpro.label33' | translate}}</label>
+            <input type="number" class="form-control" id="nb_pages" name="nb_pages" formControlName="nb_pages"  placeholder="25">
+          </div>
+          
+        </div>
+        <div class="form-group">
+          <label for="intro_cloud">{{'calcpro.label34' | translate}}</label>
+        </div>
+        <div class="row last">
+          <div class="form-group col-md-8">
+            <label for="nb_watt" style="color:orange">{{'calcpro.label35' | translate}}</label>
+            <input type="number" class="form-control placeholder_orange" style="color:orange" id="nb_watt" name="nb_watt" formControlName="nb_watt"  placeholder="quelle puissance en Watt de vos serveurs">
+          </div>
+          
+        </div>
+        <div class="form-group">
+          <label for="intro_reprise">{{'calcpro.label36' | translate}}</label>
+        </div>
+        <div class="row last">
+          <div class="form-group col-md-8">
+            <label for="nb_tel" style="color:orange">{{'calcpro.label36' | translate}}</label>
+            <input type="number" class="form-control placeholder_orange" style="color:orange" id="nb_tel" name="nb_tel" formControlName="nb_tel"  placeholder="combien de smartphones à collecter">
+          </div>
+          
+        </div>
+        <div class="form-group">
+          <label for="intro_solutions">{{'calcpro.label37' | translate}}</label>
+        </div>
+        <div class="form-check" >
+          <input class="form-check-input" type="checkbox" id="offre_teletravail" name="offre_teletravail" formControlName="offre_teletravail"  checked >
+          <label class="form-check-label" for="offre_teletravail">{{'calcpro.label38' | translate}}</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="ocean" name="ocean" formControlName="ocean"  checked>
+          <label class="form-check-label" for="ocean">{{'calcpro.label39' | translate}} </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="openbee" name="openbee" formControlName="openbee"  checked >
+          <label class="form-check-label" for="openbee">{{'calcpro.label40' | translate}}</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="flexible_engine" name="flexible_engine" formControlName="flexible_engine"  checked >
+          <label class="form-check-label" for="flexible_engine">{{'calcpro.label41' | translate}}</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="flexible_storage" name="flexible_storage" formControlName="flexible_storage"  checked >
+          <label class="form-check-label" for="flexible_storage">{{'calcpro.label42' | translate}}</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="orange_reprise" name="orange_reprise" formControlName="orange_reprise"  checked>
+          <label class="form-check-label" for="orange_reprise">{{'calcpro.label43' | translate}}</label>
+        </div>
+        <button type="submit" class="btn btn-primary">{{'calcpro.subbtn' | translate}}</button>
+      </form>
+    </div>
+    <div class="col-sm-4">
+      <div class="conseil_class">
+        <h3 class="titleConseil" style="margin-top: 3%;">{{ 'calcperso.f123ct' | translate }}</h3>
+        <ul>
+          <li>
+              <h4 style="color: #f16e00">{{ 'calcpro.h41' | translate }}</h4>
+              <p>{{ 'calcpro.p1' | translate }}</p>
+          </li>
+        </ul>
+        <ul>
+          <li>
+              <h4 style="color: #f16e00">{{ 'calcpro.h42' | translate }}</h4>
+              <p>{{ 'calcpro.p2' | translate }}</p>
+          </li>
+        </ul>
+        <ul>
+          <li>
+              <h4 style="color: #f16e00">{{ 'calcpro.h43' | translate }}</h4>
+              <p>{{ 'calcpro.p3' | translate }}</p>
+          </li>
+        </ul>
+        <ul>
+          <li>
+              <h4 style="color: #f16e00">{{ 'calcpro.h44' | translate }}</h4>
+              <p>{{ 'calcpro.p4' | translate }}</p>
+          </li>
+        </ul>
+        <ul>
+          <li>
+              <h4 style="color: #f16e00">{{ 'calcpro.h45' | translate }}</h4>
+              <p>{{ 'calcpro.p5' | translate }}</p>
+          </li>
+        </ul>
+        <ul>
+          <li>
+              <h4 style="color: #f16e00">{{ 'calcpro.h46' | translate }}</h4>
+              <p>{{ 'calcpro.p6' | translate }}</p>
+          </li>
+        </ul>
+      </div>    
+    </div>
+  </div>
+</main>

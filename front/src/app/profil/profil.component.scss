@@ -1,0 +1,284 @@
+:host {
+    height: 100%;
+    display: flex;
+    flex-grow: 1;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 1rem;
+    align-items: center;
+    width: 100%;
+    
+    /* On screens that are 600px or less, set the background color to olive */
+    @media screen and (max-width: 600px) {
+      padding: 0.5rem;
+    }
+}
+  
+.main {
+  height: 100%;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  min-width: 25rem;
+  width: 100%;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+  width: 100%;
+  flex-wrap: wrap;
+  height: 100%;
+}
+
+.wrapper-3 {
+  display: flex;
+  // justify-content: center;
+  flex-grow: 1;
+  width: 100%;
+  flex-wrap: wrap;
+  background-color: rgb(248, 248, 248);
+}
+
+.left-1 {
+  width: 32%;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  max-width: 20rem;
+  padding: 1rem;
+}
+
+.left-2 {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  min-width: 25rem;
+  padding: 1rem;
+}
+
+.left-3 {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  min-width: 5rem;
+}
+
+.right-1 {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  flex-grow: 1;
+  min-width: 20rem;
+  max-height: 500px;
+  padding: 1rem;
+}
+
+.right-2 {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  height: 100%;
+  flex-grow: 1;
+  min-width: 20rem;
+  padding: 1rem;
+}
+
+.right-3 {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  height: 100%;
+  flex-grow: 1;
+  min-width: 5rem;
+}
+
+.content-right-1 {
+  padding: 1.5rem;
+  width: 100%;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  max-height: 450;
+  background-color: rgb(248, 248, 248);
+}
+.content-right-2 {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.content-right-3 {
+  // padding: 1.5rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  max-height: 280px;
+  overflow: scroll;
+}
+
+.content-left {
+  width: 100%;
+  height: 100%;
+  font-weight: bold;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(222, 222, 222);
+  padding: 1rem;
+}
+
+.content-left-2 {
+  width: 100%;
+  height: 100%;
+  font-weight: bold;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(248, 248, 248);
+  padding: 1rem;
+}
+
+.content-left-3 {
+  padding-right: 1rem;
+  width: 100%;
+  height: 100%;
+  font-weight: bold;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.wrapper-groupes {
+  display: flex;
+  // justify-content: center;
+  flex-grow: 1;
+  width: 100%;
+  flex-wrap: wrap;
+  background-color: rgb(248, 248, 248);
+}
+
+.side-groupes {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  flex-grow: 1;
+  min-width: 5rem;
+}
+
+.content-groupes {
+  // padding: 1.5rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  max-height: 280px;
+}
+
+.groupes-title {
+  display: flex;
+  justify-content: center;
+}
+
+.groupes-text {
+  display: flex;
+  justify-content: center;
+  border-right: solid 1.5px #ff7900;
+}
+
+.groupes-text-2 {
+  display: flex;
+  justify-content: center;
+  border-left: solid 1.5px #ff7900;
+}
+
+.p-groupes {
+  margin: 0;
+  margin-bottom: 5px;
+}
+
+.CO2-text-groupes {
+    margin: 0;
+    margin-bottom: 15px;
+}
+
+
+.text-orange {
+    color: #ff7900
+}
+
+.CO2-text {
+    margin: 0;
+    margin-bottom: 5px;
+}
+
+ngb-carousel {
+    width: 100%;
+    height: 100%;
+}
+
+.chart-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-height: 500px;
+}
+.global-doughnut {
+    max-width: 400px;
+    max-height: 400px;
+}
+
+.bar-chart {
+    width: 100%;
+    height: 100%;
+}
+
+.alert-icon {
+}
+
+.success-btn {
+  background-image: var(--o-success-icon);
+  width: 25px;
+  height: 25px;
+  border: none;
+  padding: 0;
+  margin: 0;
+  border-radius: 100%;
+}
+
+td {
+  vertical-align: middle;
+}
+
+.resolution-text {
+  margin: 0;
+  padding: 0;
+}
+
+.tab-content {
+  background-color: rgb(248, 248, 248);
+}
+
+.carrousel-comp {
+  background-color: rgb(248, 248, 248);
+  @media screen and (max-width: 550px) {
+    max-height: 300px;
+  }
+}
+
+ngb-carousel {
+
+  @media screen and (max-width: 550px) {
+    max-height: 300px;
+  }
+}

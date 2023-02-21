@@ -1,0 +1,14 @@
+ <main role="main" id="content" class="container my-5" >
+        <div class="row" >
+            <div *ngFor="let homeCard of homeCards" class="col-md-6 col-sm-12 col-lg-3" style="margin-bottom: 20px;">
+                <div class="card" style="width: 18rem;">
+                    <img [src]="homeCard.card_illustration " [alt]="homeCard.card_title" style="height: 250px; background-color: black;">
+                    <div class="card-body">
+                        <h5 class="card-title">{{homeCard.card_title}}</h5>
+                        <p class="card-text">{{homeCard.card_description}}</p>
+                        <a href="/{{homeCard.button_route}}" class="btn btn-primary">{{homeCard.button_text}}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>

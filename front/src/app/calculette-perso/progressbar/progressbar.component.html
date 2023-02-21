@@ -1,0 +1,76 @@
+<div class="row" >
+    <div class="col-sm-8">
+        <div class="progress">
+            <div *ngIf="workPlace > 0"
+            class="progress-bar progress-bar-striped progress-bar-animated"
+            role="progressbar" aria-label="Segment one Animated striped example" 
+            [style]="'width:' + (workPlace * 100 / progressMaxWidth) + '%; border-right: solid 1px grey'" [attr.aria-valuenow]="workPlace"
+            aria-valuemin="0" [attr.aria-valuemax]="progressMax">
+                <span 
+                ngbPopover="{{workPlace | number: '1.0-2'}} t.CO2"
+                [openDelay]="100"
+                [closeDelay]="500"
+                triggers="mouseenter:mouseleave">
+                    <b class="progressValue"><span #nb >Lieu de travail</span></b>
+                </span>
+            </div>
+            <div *ngIf="transport > 0"
+            class="progress-bar progress-bar-striped progress-bar-animated"
+            role="progressbar" aria-label="Segment two Animated striped example" 
+            [style]="'width:' + (transport * 100 / progressMaxWidth) + '%; border-right: solid 1px grey'" [attr.aria-valuenow]="transport"
+            aria-valuemin="0" [attr.aria-valuemax]="progressMax">
+                <span 
+                ngbPopover="{{transport | number: '1.0-2'}} t.CO2"
+                [openDelay]="100"
+                [closeDelay]="500"
+                triggers="mouseenter:mouseleave">
+                    <b class="progressValue"><span #nb >Transport</span></b>
+                </span>
+            </div>
+            <div *ngIf="numerique > 0"
+            class="progress-bar progress-bar-striped progress-bar-animated"
+            role="progressbar" aria-label="Segment tree Animated striped example" 
+            [style]="'width:' + (numerique * 100 / progressMaxWidth) + '%; border-right: solid 1px grey'" [attr.aria-valuenow]="numerique"
+            aria-valuemin="0" [attr.aria-valuemax]="progressMax">
+                <span 
+                ngbPopover="{{numerique | number: '1.0-2'}} t.CO2"
+                [openDelay]="100"
+                [closeDelay]="500"
+                triggers="mouseenter:mouseleave">
+                    <b class="progressValue"><span #nb >Numérique</span></b>
+                </span>
+            </div>
+            <div *ngIf="alimentation > 0"
+            class="progress-bar progress-bar-striped progress-bar-animated"
+            role="progressbar" aria-label="Segment four Animated striped example" 
+            [style]="'width:' + (alimentation * 100 / progressMaxWidth) + '%; border-right: solid 1px grey'" [attr.aria-valuenow]="alimentation"
+            aria-valuemin="0" [attr.aria-valuemax]="progressMax">
+                <span 
+                ngbPopover="{{alimentation | number: '1.0-2'}} t.CO2"
+                [openDelay]="100"
+                [closeDelay]="500"
+                triggers="mouseenter:mouseleave">
+                    <b class="progressValue"><span #nb >Alimentation</span></b>
+                </span>
+            </div>
+            <div class="progress-bar progress-bar-striped progress-bar-animated"
+            role="progressbar" aria-label="Segment five Animated striped example" 
+            [style]="'width:' + (achat * 100 / progressMaxWidth) + '%'" [attr.aria-valuenow]="achat"
+            aria-valuemin="0" [attr.aria-valuemax]="progressMax">
+                <span 
+                ngbPopover="{{achat | number: '1.0-2'}} t.CO2"
+                [openDelay]="100"
+                [closeDelay]="500"
+                triggers="mouseenter:mouseleave">
+                    <b class="progressValue"><span #nb >Achat</span></b>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="progress_descript">
+            <b>{{progressTotal | number: '1.0-2'}} / 2.00 t.CO2</b>
+            {{'calcperso.progressDesc' | translate}}
+        </div>
+    </div>
+</div>

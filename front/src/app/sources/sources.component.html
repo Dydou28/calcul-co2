@@ -1,0 +1,52 @@
+<main role="main" id="content" class="container my-5">
+    <h1>{{'sources.title' | translate}}</h1>
+    <p>
+    {{'sources.desc1' | translate}}
+    </p>
+    <p>
+        {{'sources.desc2' | translate}}
+    </p>
+    <p>
+        {{'sources.desc3' | translate}}
+    </p>
+ 
+    <h3 >télétravail</h3>
+     <div *ngFor=" let service of conseil" >
+        <p *ngIf="service.category=='telework'">
+            - {{ service.description }} <strong>{{ service.value }} {{ service.unity }}</strong> <a *ngIf="service.source_link" href="{{ service.source_link }}" target="_blank">Source</a>.
+        </p>
+    </div>
+    <h3 >transport</h3>
+    <div *ngFor=" let service of conseil" >
+       <p *ngIf="service.category=='transport'">
+           - {{ service.description }} <strong>{{ service.value }} {{ service.unity }}</strong> <a *ngIf="service.source_link" href="{{ service.source_link }}" target="_blank">Source</a>.
+       </p>
+   </div>
+   <h3 >numerique</h3>
+   <div *ngFor=" let service of conseil" >
+      <p *ngIf="service.category=='numerique'">
+          - {{ service.description }} <strong>{{ service.value }} {{ service.unity }}</strong> <a *ngIf="service.source_link" href="{{ service.source_link }}" target="_blank">Source</a>.
+      </p>
+  </div>
+  <h3 >alimentation</h3>
+  <div *ngFor=" let service of conseil" >
+     <p *ngIf="service.category=='alimentation'">
+         - {{ service.description }} <strong>{{ service.value }} {{ service.unity }}</strong> <a *ngIf="service.source_link" href="{{ service.source_link }}" target="_blank">Source</a>.
+     </p>
+ </div>
+ <h3 >achat</h3>
+ <div *ngFor=" let service of conseil" >
+    <p *ngIf="service.category=='achat'">
+        - {{ service.description }} <strong>{{ service.value }} {{ service.unity }}</strong> <a *ngIf="service.source_link"  href="{{ service.source_link }}" target="_blank">Source</a>.
+    </p>
+</div>
+<h3 >seminaire</h3>
+<div *ngFor=" let service of conseil" >
+   <p *ngIf="service.category=='seminaire'">
+       - {{ service.description }} <strong>{{ service.value }} {{ service.unity }}</strong> <a *ngIf="service.source_link" href="{{ service.source_link }}" target="_blank">Source</a>.
+   </p>
+</div>
+        
+
+    
+</main>

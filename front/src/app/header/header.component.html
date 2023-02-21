@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" >
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/home">
+      <img src="assets/img/logo/orange-logo.svg" width="50" height="50" role="img" alt="Boosted" loading="lazy">
+      <h1>{{'header.title' | translate}}</h1>
+    </a>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link" [ngClass]=" this.router.url.startsWith('/home') ? 'active' : ''" aria-current="page" href="home">{{'header.home' | translate}}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [ngClass]=" this.router.url.startsWith('/contact') ? 'active' : ''" aria-current="page" href="contact">{{'header.contact' | translate}}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [ngClass]=" this.router.url.startsWith('/profil') ? 'active' : ''" aria-current="page" href="profil">{{'header.profil' | translate}}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [ngClass]=" this.router.url.startsWith('/admin') ? 'active' : ''" aria-current="page" href="admin">ADMIN</a>
+        </li>
+      </ul>
+      <li ngbDropdown class="nav-item">
+        <a href (click)="false" class="nav-link" ngbDropdownToggle>{{siteLanguage}}</a>
+        <div ngbDropdownMenu class="dropdown-menu dropdown-menu-end">
+          <button ngbDropdownItem *ngFor="let lang of languageList" (click)="changeSiteLanguage(lang.code)">{{lang.label}}</button>
+        </div>
+      </li>
+    </div>
+  </div>
+</nav>

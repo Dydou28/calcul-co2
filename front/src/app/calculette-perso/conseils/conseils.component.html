@@ -1,0 +1,11 @@
+<div class="conseil_class">
+    <h3 class="titleConseil" style="margin-top: 3%;">{{ 'calcperso.f123ct' | translate }}</h3>
+    <ul>
+        <div *ngFor="let conseil of conseils"> 
+            <li  *ngIf=" this.router.url.split('/')[3] == conseil.conseils_step">
+                <h4 style="color: #f16e00">{{ conseil.conseils_title }}</h4>
+                <p>{{ conseil.conseils_description }}</p>
+            </li>
+        </div>
+    </ul>
+</div>

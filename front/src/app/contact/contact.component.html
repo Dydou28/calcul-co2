@@ -1,0 +1,43 @@
+<main id="content" role="main">
+    <div class="container my-5">
+        <h1>{{'contact.title' | translate}}</h1>
+        <form role="form" id="myForm" action="avis.php" method="post"><input type="hidden" name="token" value="d04a5a14b33857f2332904aed5b59e10">
+            <label for="form-control">{{'contact.rate' | translate}}</label>
+            <div class="form-group">
+                <ngb-rating [(rate)]="currentRate"></ngb-rating>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                <label class="form-check-label" for="flexRadioDefault1">
+                    {{'contact.yes' | translate}}
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                <label class="form-check-label" for="flexRadioDefault2">
+                    {{'contact.no' | translate}}
+                </label>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-12 col-lg-8 col-md-8">
+                        <label class="form-label" for="FormControlTextarea2">{{'contact.q1' | translate}}<span style="color: grey;">(200 max)</span></label>
+                        <textarea class="form-control" id="FormControlTextarea2" name="text1" rows="2" maxlength="200"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-12 col-lg-8 col-md-8">
+                        <label class="form-label" for="FormControlTextarea1">{{'contact.q2' | translate}}<span style="color: grey;">(500 max)</span></label>
+                        <textarea class="form-control" name="text2" id="FormControlTextarea1" maxlength="500" rows="5" ></textarea>
+                    </div>
+                </div>
+            </div>
+            <h6>{{'contact.mail' | translate}}</h6>
+            <div class="form-group my-3" style="padding-bottom: 40px;">
+                <button type="submit" class="btn btn-primary">{{'contact.submit' | translate}}</button>
+            </div>
+        </form>
+    </div>
+</main>

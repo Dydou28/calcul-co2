@@ -1,0 +1,15 @@
+
+<nav class="navbar fixed-bottom navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" (click)="redirectSource()">
+        <span>Sources</span>
+      </a>
+      <a class="navbar-brand" href="#">
+        <span>© Orange 2022</span>
+      </a>
+      
+      <a class="navbar-brand" (click)="userService.logOut()">
+        <span>{{'footer.logout' | translate}}</span>
+      </a>
+    </div>
+  </nav>

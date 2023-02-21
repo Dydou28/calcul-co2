@@ -1,0 +1,307 @@
+<body>
+  <div class="main">
+    <div class="wrapper">
+      <div class="left-1">
+        <div class="content-left">
+          <h2>
+            <span class="text-orange">Paul-adrien</span>, voici votre bilan carbone
+          </h2>
+          <h4>Impact Personnel:</h4>
+          <p class="CO2-text"><span class="text-orange">{{TotalCarbon.all | number}} </span>t.CO2 par an</p>
+          <button class="btn btn-secondary btn-sm">Questionnaire Individuel</button>
+          <h4 style="margin-top: 15px;">Impact sur autrui:</h4>
+          <p class="CO2-text"><span class="text-orange">0 </span>t.CO2 par an</p>
+          <button class="btn btn-secondary btn-sm">Questionnaire autrui</button>
+          <h4 style="margin-top: 15px;">Compensation carbone:</h4>
+          <p class="CO2-text"><span class="text-orange">0 </span>t.CO2 par an</p>
+          <button class="btn btn-secondary btn-sm">Questionnaire Compensation</button>
+        </div>
+      </div>
+      <div class="right-1">
+          <div class="content-right-1">
+            <ngb-carousel class="carrousel-comp" #carousel [interval]="3000" [pauseOnHover]="pauseOnHover" (slide)="onSlide($event)">
+              <ng-template ngbSlide>
+                <div class="chart-container">
+                  <canvas baseChart
+                    [data]="doughnutChartGlobalData"
+                    [options]="doughnutChartGlobalOptions"
+                    [plugins]="[]"
+                    [legend]="true"
+                    [type]="'doughnut'"
+                    class="global-doughnut">
+                  </canvas>
+                </div>
+              </ng-template>
+              <ng-template ngbSlide>
+                <div class="chart-container">
+                  <canvas baseChart
+                    [data]="doughnutChartWorkplaceData"
+                    [options]="doughnutChartWorkplaceOptions"
+                    [plugins]="[]"
+                    [legend]="true"
+                    [type]="'doughnut'"
+                    class="global-doughnut">
+                  </canvas>
+                </div>
+              </ng-template>
+              <ng-template ngbSlide>
+                <div class="chart-container">
+                  <canvas baseChart
+                    [data]="doughnutChartTransportData"
+                    [options]="doughnutChartTransportOptions"
+                    [plugins]="[]"
+                    [legend]="true"
+                    [type]="'doughnut'"
+                    class="global-doughnut">
+                  </canvas>
+                </div>
+              </ng-template>
+              <ng-template ngbSlide>
+                <div class="chart-container">
+                  <canvas baseChart
+                    [data]="doughnutChartAlimentationData"
+                    [options]="doughnutChartAlimentationOptions"
+                    [plugins]="[]"
+                    [legend]="true"
+                    [type]="'doughnut'"
+                    class="global-doughnut">
+                  </canvas>
+                </div>
+              </ng-template>
+              <ng-template ngbSlide>
+                <div class="chart-container">
+                  <canvas baseChart
+                    [data]="doughnutChartAchatData"
+                    [options]="doughnutChartAchatOptions"
+                    [plugins]="[]"
+                    [legend]="true"
+                    [type]="'doughnut'"
+                    class="global-doughnut">
+                  </canvas>
+                </div>
+              </ng-template>
+            </ngb-carousel>
+          </div>
+      </div>
+    </div>
+    <div class="wrapper">
+      <div class="left-2">
+        <div class="content-left-2">
+          <h4>Groupes:</h4>
+          <div class="wrapper-groupes">
+            <div class="side-groupes">
+              <div class="content-groupes">
+                <div class="mb-3" style="margin-right: 10px;">
+                  <label for="exampleFormControlInput1" class="form-label">Join a groupe</label>
+                  <input type="email" 
+                  class="form-control"
+                  id="exampleFormControlInput1"
+                  placeholder="">
+                  <button style="margin-top: 5px;" class="btn btn-primary btn-sm">Ajouter</button>
+                </div>
+              </div>
+            </div>
+            <div class="side-groupes">
+              <div class="content-groupes">
+                <div class="mb-3" style="margin-left: 10px;">
+                  <label for="exampleFormControlInput1" class="form-label">Create a groupe</label>
+                  <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="">
+                  <button style="margin-top: 5px;" class="btn btn-primary btn-sm">Ajouter</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="groupes-title">
+            <h3>Votre groupe: Test Groupe</h3>
+          </div>
+          <div class="wrapper-groupes">
+            <div class="side-groupes">
+              <div class="content-groupes">
+                <div class="groupes-text">
+                  <p class="p-groupes">Au total:</p>
+                </div>
+                <div class="groupes-text">
+                  <p class="CO2-text-groupes"><span class="text-orange">7,2 </span>t.CO2</p>
+                </div>
+                <div class="groupes-text">
+                  <p class="p-groupes">Avec en moyenne:</p>
+                </div>
+                <div class="groupes-text">
+                  <p class="CO2-text-groupes"><span class="text-orange">7,2 </span>t.CO2/ participant</p>
+                </div>
+              </div>
+            </div>
+            <div class="side-groupes">
+              <div class="content-groupes">
+                <div class="groupes-text-2">
+                  <p class="p-groupes">Vous êtes:</p>
+                </div>
+                <div class="groupes-text-2">
+                  <p class="CO2-text-groupes"><span class="text-orange">1 </span> participant(s)</p>
+                </div>
+                <div class="groupes-text-2">
+                  <p class="p-groupes">vous émettez:</p>
+                </div>
+                <div class="groupes-text-2">
+                  <p class="CO2-text-groupes"><span class="text-orange">X </span>% de plus</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="right-2">
+        <div class="content-right-2">
+          <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+            <li [ngbNavItem]="1" class="tabs">
+              <a ngbNavLink>Résolutions</a>
+              <ng-template ngbNavContent>
+                <div class="wrapper-3">
+                  <div class="left-3">
+                    <div class="content-left-3">
+                      <button style="margin-bottom: 10px;" class="btn btn-primary btn-md">Voir les propositions de résolutions</button>
+                      <form action="">
+                        <div class="mb-3">
+                          <label for="exampleInputEmail1" class="form-label">Nouvelle résolution:</label>
+                          <textarea type="text" class="form-control" id="exampleInputEmail1" rows="4"></textarea>
+                        </div>
+                        <button class="btn btn-primary btn-sm">Ajouter</button>
+                      </form>
+                    </div>
+                  </div>
+                  <div class="right-3">
+                    <div class="content-right-3">
+                        <table class="table  table-sm">
+                          <tbody>
+                          <tr>
+                            <td>
+                              <p class="resolution-text">ceci est un test de résolution</p>
+                            </td>
+                            <td>
+                              <button class="success-btn">
+                                <span class="alert-icon">
+                                  <span class="visually-hidden">success</span>
+                                </span>
+                              </button>
+                            </td>
+                            <td>
+                              <button type="button" class="btn-close"><span class="visually-hidden">Close</span></button>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <p class="resolution-text">ceci est un test de résolution</p>
+                            </td>
+                            <td>
+                              <button class="success-btn">
+                                <span class="alert-icon">
+                                  <span class="visually-hidden">success</span>
+                                </span>
+                              </button>
+                            </td>
+                            <td>
+                              <button type="button" class="btn-close"><span class="visually-hidden">Close</span></button>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <p class="resolution-text">ceci est un test de résolution</p>
+                            </td>
+                            <td>
+                              <button class="success-btn">
+                                <span class="alert-icon">
+                                  <span class="visually-hidden">success</span>
+                                </span>
+                              </button>
+                            </td>
+                            <td>
+                              <button type="button" class="btn-close"><span class="visually-hidden">Close</span></button>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <p class="resolution-text">ceci est un test de résolution</p>
+                            </td>
+                            <td>
+                              <button class="success-btn">
+                                <span class="alert-icon">
+                                  <span class="visually-hidden">success</span>
+                                </span>
+                              </button>
+                            </td>
+                            <td>
+                              <button type="button" class="btn-close"><span class="visually-hidden">Close</span></button>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <p class="resolution-text">ceci est un test de résolution</p>
+                            </td>
+                            <td>
+                              <button class="success-btn">
+                                <span class="alert-icon">
+                                  <span class="visually-hidden">success</span>
+                                </span>
+                              </button>
+                            </td>
+                            <td>
+                              <button type="button" class="btn-close"><span class="visually-hidden">Close</span></button>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <p class="resolution-text">ceci est un test de résolution</p>
+                            </td>
+                            <td>
+                              <button class="success-btn">
+                                <span class="alert-icon">
+                                  <span class="visually-hidden">success</span>
+                                </span>
+                              </button>
+                            </td>
+                            <td>
+                              <button type="button" class="btn-close"><span class="visually-hidden">Close</span></button>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <p class="resolution-text">ceci est un test de résolution</p>
+                            </td>
+                            <td>
+                              <button class="success-btn">
+                                <span class="alert-icon">
+                                  <span class="visually-hidden">success</span>
+                                </span>
+                              </button>
+                            </td>
+                            <td>
+                              <button type="button" class="btn-close"><span class="visually-hidden">Close</span></button>
+                            </td>
+                          </tr>
+                          </tbody>
+                        </table>
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+            </li>
+            <li [ngbNavItem]="2" class="tabs">
+              <a ngbNavLink>Evolution</a>
+              <ng-template ngbNavContent>
+                <canvas baseChart
+                  [data]="barChartData"
+                  [options]="barChartOptions"
+                  [plugins]="[]"
+                  [legend]="true"
+                  [type]="'bar'"
+                  class="bar-chart">
+                </canvas>
+              </ng-template>
+            </li>
+          </ul>
+          <div [ngbNavOutlet]="nav" ></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
