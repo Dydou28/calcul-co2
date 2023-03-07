@@ -140,7 +140,11 @@
             </div>
             <div class="side-groupes">
               <div class="content-groupes">
-                <div class="mb-3" style="margin-left: 10px">
+                <div
+                  class="mb-3"
+                  style="margin-left: 10px"
+                  [formGroup]="this.groupForm"
+                >
                   <label for="exampleFormControlInput1" class="form-label"
                     >Create a groupe</label
                   >
@@ -153,6 +157,7 @@
                   <button
                     style="margin-top: 5px"
                     class="btn btn-primary btn-sm"
+                    (click)="onCreate()"
                   >
                     Ajouter
                   </button>

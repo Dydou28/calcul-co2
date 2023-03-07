@@ -1,13 +1,24 @@
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-<h2 class="titleParti" style="margin-top: 5%;">{{'calcperso.tform3' | translate}}</h2>
-<p class="numDesc">{{'calcperso.numDesc' | translate}}</p>
-<button  class="btn btn-primary custom-add-button"  (click)="add_row(questModal)" type="button">{{'calcperso.addnumbtn' | translate}}</button>
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
+/>
+<h2 class="titleParti" style="margin-top: 5%">
+  {{ "calcperso.tform3" | translate }}
+</h2>
+<p class="numDesc">{{ "calcperso.numDesc" | translate }}</p>
+<button
+  class="btn btn-primary custom-add-button"
+  (click)="add_row(questModal)"
+  type="button"
+>
+  {{ "calcperso.addnumbtn" | translate }}
+</button>
 <table class="table table-striped">
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">{{'calcperso.numCol1' | translate}}</th>
-      <th scope="col">{{'calcperso.numCol2' | translate}}</th>
+      <th scope="col">{{ "calcperso.numCol1" | translate }}</th>
+      <th scope="col">{{ "calcperso.numCol2" | translate }}</th>
     </tr>
   </thead>
   <tbody>
@@ -19,52 +30,112 @@
       <td>{{ numerique.resp }}</td>
       <td>
         <a (click)="deleteOne(i)">
-          <img src="../../../assets/icons/cross-svgrepo-com.svg"  alt="" aria-hidden="true" width="12" height="12">
+          <img
+            src="../../../assets/icons/cross-svgrepo-com.svg"
+            alt=""
+            aria-hidden="true"
+            width="12"
+            height="12"
+          />
         </a>
       </td>
     </tr>
   </tbody>
 </table>
-<button  class="btn btn-secondary" style="margin-right: 20px ;" (click)="previousStep()">{{ 'calcperso.previous' | translate }}</button>
-<button  class="btn btn-primary" (click)="nextStep()" >{{ 'calcperso.next' | translate }}</button>
+<button
+  class="btn btn-secondary"
+  style="margin-right: 20px"
+  (click)="previousStep()"
+>
+  {{ "calcperso.previous" | translate }}
+</button>
+<button class="btn btn-primary" (click)="nextStep()">
+  {{ "calcperso.next" | translate }}
+</button>
 
 <!-- frormulaire ajout ligne transport -->
 <ng-template #questModal let-modal>
-  <form name="form" [formGroup]="this.calcpersoForm3" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
-    <div class="modal-header" style="padding: 10px; margin: 15px;">
-      <h4 style="color:grey" class="modal-title" id="exampleModalLabel">{{'calcperso.numT1' | translate}}</h4>
+  <form
+    name="form"
+    [formGroup]="this.calcpersoForm3"
+    (ngSubmit)="f.form.valid && onSubmit()"
+    #f="ngForm"
+    novalidate
+  >
+    <div class="modal-header" style="padding: 10px; margin: 15px">
+      <h4 style="color: grey" class="modal-title" id="exampleModalLabel">
+        {{ "calcperso.numT1" | translate }}
+      </h4>
     </div>
     <div class="modal-body">
-      <label for="">{{'calcperso.numT2' | translate}}</label>
-      <select class="form-select" name="numeriqueType" formControlName="numeriqueType" required>
-        <option value="smartphone" selected>{{'calcperso.numModal1' | translate}}</option>
-        <option value="laptop">{{'calcperso.numModal2' | translate}}</option>
-        <option value="desktop">{{'calcperso.numModal3' | translate}}</option>
+      <label for="">{{ "calcperso.numT2" | translate }}</label>
+      <select
+        class="form-select"
+        name="numeriqueType"
+        formControlName="numeriqueType"
+        required
+      >
+        <option value="smartphone" selected>
+          {{ "calcperso.numModal1" | translate }}
+        </option>
+        <option value="laptop">{{ "calcperso.numModal2" | translate }}</option>
+        <option value="desktop">{{ "calcperso.numModal3" | translate }}</option>
         <option value="gamer">PC gamer</option>
-        <option value="screen">{{'calcperso.numModal4' | translate}}</option>
+        <option value="screen">{{ "calcperso.numModal4" | translate }}</option>
         <option value="printej">Imprimante jet d'encre</option>
         <option value="printel">Imprimante laser</option>
-
       </select>
-      <label for="">{{'calcperso.numT3' | translate}}</label>
-      <input type="number" class="form-control" min="0" name="dataNb" formControlName="dataNb" required>
-      <label for="">{{'calcperso.numT4' | translate}}</label>
+      <label for="">{{ "calcperso.numT3" | translate }}</label>
+      <input
+        type="number"
+        class="form-control"
+        min="0"
+        name="dataNb"
+        formControlName="dataNb"
+        required
+      />
+      <label for="">{{ "calcperso.numT4" | translate }}</label>
       <div class="form-check">
-        <input class="form-check-input" type="radio" name="deviceStatus" formControlName="deviceStatus" value="non-reconditionne">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="deviceStatus"
+          formControlName="deviceStatus"
+          value="non-reconditionne"
+        />
         <label class="form-check-label" for="flexRadioDefault1">
-          {{'calcperso.no' | translate}}
+          {{ "calcperso.no" | translate }}
         </label>
       </div>
       <div class="form-check">
-        <input class="form-check-input" type="radio" name="deviceStatus" formControlName="deviceStatus" value="reconditionne" checked="true">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="deviceStatus"
+          formControlName="deviceStatus"
+          value="reconditionne"
+          checked="true"
+        />
         <label class="form-check-label" for="flexRadioDefault2">
-          {{'calcperso.yes' | translate}}
+          {{ "calcperso.yes" | translate }}
         </label>
       </div>
     </div>
     <div class="modal-footer">
-      <button type="submit" class="btn btn-primary"  value="third_form_calcperso">{{ 'calcperso.fsub' | translate }}</button>
-      <button type="button" class="btn btn-secondary" (click)="modal.dismiss('Close click')">{{'calcperso.close' | translate}}</button>
+      <button
+        type="submit"
+        class="btn btn-primary"
+        value="third_form_calcperso"
+      >
+        {{ "calcperso.fsub" | translate }}
+      </button>
+      <button
+        type="button"
+        class="btn btn-secondary"
+        (click)="modal.dismiss('Close click')"
+      >
+        {{ "calcperso.close" | translate }}
+      </button>
     </div>
   </form>
 </ng-template>

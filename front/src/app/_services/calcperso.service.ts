@@ -3,14 +3,12 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
-
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
 };
 
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CalcpersoService {
   public stepEnding = {
@@ -19,53 +17,73 @@ export class CalcpersoService {
     numerique: false,
     alimentation: false,
     achat: false,
-  }
+  };
 
-  constructor(public http: HttpClient) { }
+  constructor(public http: HttpClient) {}
 
   initNewBalance() {
     const userId = window.localStorage.getItem('userId');
-    return this.http.post(environment.AUTH_API + 'user/'+userId+'/balance/individual',{
-      },
+    return this.http.post(
+      environment.AUTH_API + 'user/' + userId + '/balance/individual',
+      {},
       httpOptions
     );
   }
 
   restartBalance() {
     const userId = window.localStorage.getItem('userId');
-    return this.http.post(environment.AUTH_API + 'user/'+userId+'/balance/individual/restart',{
-      },
+    return this.http.post(
+      environment.AUTH_API + 'user/' + userId + '/balance/individual/restart',
+      {},
       httpOptions
     );
   }
 
   getAllBalance() {
     const userId = window.localStorage.getItem('userId');
-    return this.http.get(environment.AUTH_API + 'user/'+userId+'/balance/individual',
+    return this.http.get(
+      environment.AUTH_API + 'user/' + userId + '/balance/individual',
       httpOptions
     );
   }
 
   getBalance(balanceId: any) {
     const userId = window.localStorage.getItem('userId');
-    return this.http.get(environment.AUTH_API + 'user/'+userId+'/balance/'+balanceId+'/individual',
+    return this.http.get(
+      environment.AUTH_API +
+        'user/' +
+        userId +
+        '/balance/' +
+        balanceId +
+        '/individual',
       httpOptions
     );
   }
 
   getStepBalance(stepName: any) {
     const userId = window.localStorage.getItem('userId');
-    return this.http.get(environment.AUTH_API + 'user/'+userId+'/balance/individual/step/'+stepName,
+    return this.http.get(
+      environment.AUTH_API +
+        'user/' +
+        userId +
+        '/balance/individual/step/' +
+        stepName,
       httpOptions
     );
   }
 
   updateStepBalance(stepName: any, form: any, balanceId: any) {
     const userId = window.localStorage.getItem('userId');
-    console.log(form)
-    return this.http.put(environment.AUTH_API + 'user/'+userId+'/balance/'+balanceId+'/individual/step/'+stepName,
+    return this.http.put(
+      environment.AUTH_API +
+        'user/' +
+        userId +
+        '/balance/' +
+        balanceId +
+        '/individual/step/' +
+        stepName,
       {
-        form
+        form,
       },
       httpOptions
     );
@@ -74,27 +92,28 @@ export class CalcpersoService {
   deleteRow(stepName: any, questionId: any, balanceId: any) {
     const userId = window.localStorage.getItem('userId');
     return this.http.delete(
-      environment.AUTH_API + 'user/'+userId+'/balance/'+balanceId+'/individual/step/'+stepName
-      + '/'+ questionId,
+      environment.AUTH_API +
+        'user/' +
+        userId +
+        '/balance/' +
+        balanceId +
+        '/individual/step/' +
+        stepName +
+        '/' +
+        questionId,
       httpOptions
     );
   }
 
   updateStepEnding(form: any) {
-    form.map(
-      (s: any) => { 
-        if (s.label === 'workPlace')
-          this.stepEnding['workPlace'] = true
-        else if (s.label === 'transport')
-          this.stepEnding['transport'] = true
-        else if (s.label === 'numerique')
-          this.stepEnding['numerique'] = true
-        else if (s.label === 'alimentation')
-          this.stepEnding['alimentation'] = true
-        else if (s.label === 'achat')
-          this.stepEnding['achat'] = true
-      }
-    );
+    form.map((s: any) => {
+      if (s.label === 'workPlace') this.stepEnding['workPlace'] = true;
+      else if (s.label === 'transport') this.stepEnding['transport'] = true;
+      else if (s.label === 'numerique') this.stepEnding['numerique'] = true;
+      else if (s.label === 'alimentation')
+        this.stepEnding['alimentation'] = true;
+      else if (s.label === 'achat') this.stepEnding['achat'] = true;
+    });
   }
 
   parseWorkPlaceForm(form: any) {
@@ -138,27 +157,35 @@ export class CalcpersoService {
         label: 'hotelType',
         resp: form.hotelType,
         totalCarbon: 0,
-      }
+      },
     ];
   }
 
   parseTransportForm(form: any) {
     return {
-      label: form.type + (form.subtype 
-        && (form.type === 'car' || form.type === 'carpooling' || form.type === 'moto' || form.type === 'plane')
-         ? ' | ' + form.subtype : '') 
-          + (form.subtype2 && form.type === 'carpooling' ? ' | ' + form.subtype2: ''),
+      label:
+        form.type +
+        (form.subtype &&
+        (form.type === 'car' ||
+          form.type === 'carpooling' ||
+          form.type === 'moto' ||
+          form.type === 'plane')
+          ? ' | ' + form.subtype
+          : '') +
+        (form.subtype2 && form.type === 'carpooling'
+          ? ' | ' + form.subtype2
+          : ''),
       resp: form.distance,
-      totalCarbon: 0
+      totalCarbon: 0,
     };
   }
 
   parseNumeriqueForm(form: any) {
     return {
-        label: form.numeriqueType + ' | ' + form.deviceStatus,
-        resp: form.dataNb,
-        totalCarbon: 0,
-      };
+      label: form.numeriqueType + ' | ' + form.deviceStatus,
+      resp: form.dataNb,
+      totalCarbon: 0,
+    };
   }
 
   parseAlimentationForm(form: any) {
@@ -227,7 +254,7 @@ export class CalcpersoService {
         label: 'nbChoco',
         resp: form.nbChoco,
         totalCarbon: 0,
-      }
+      },
     ];
   }
 
@@ -262,9 +289,7 @@ export class CalcpersoService {
         label: 'prixComService',
         resp: form.prixComService,
         totalCarbon: 0,
-      }
+      },
     ];
   }
-
-
 }

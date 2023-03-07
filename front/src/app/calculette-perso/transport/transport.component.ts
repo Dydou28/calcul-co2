@@ -9,9 +9,8 @@ import { UpdateService } from 'src/app/_services/update.service';
 @Component({
   selector: 'app-transport',
   templateUrl: './transport.component.html',
-  styleUrls: ['./transport.component.scss']
+  styleUrls: ['./transport.component.scss'],
 })
-
 export class TransportComponent implements OnInit {
   private balanceId = '';
 
@@ -24,76 +23,84 @@ export class TransportComponent implements OnInit {
 
   public transportForm: any = [];
 
-  constructor(private modalService: NgbModal,
+  constructor(
+    private modalService: NgbModal,
     private calcPersoService: CalcpersoService,
     private http: HttpClient,
     private router: Router,
-    private updateService: UpdateService) {  
-  }
-
-  
+    private updateService: UpdateService
+  ) {}
 
   ngOnInit(): void {
     this.getStepBalance('transport');
   }
 
   getStepBalance(stepName: String) {
-    this.calcPersoService.getStepBalance(stepName).subscribe((data: any) => {
-      this.balanceId = data.balanceId;
-      console.log(data)
-      if (data.status === true && data.balanceStep.length > 0) {
-        this.calcPersoService.updateStepEnding(data.balanceStep)
-        let balanceStepIndex = data.balanceStep.map(
-          (s: any) => { if (s && s.label === stepName) return stepName;
-           else return null;
-          }
-        ).indexOf(stepName);
-        if (data.balanceStep[balanceStepIndex]?.questions && data.balanceStep[balanceStepIndex].questions.length > 0)
-          this.transportForm = data.balanceStep[balanceStepIndex].questions;
-        else 
-          this.transportForm = [];
-        console.log(this.transportForm, this.balanceId)
-      }
-    }, (err) => {
-      
-    })
+    this.calcPersoService.getStepBalance(stepName).subscribe(
+      (data: any) => {
+        this.balanceId = data.balanceId;
+        console.log(data);
+        if (data.status === true && data.balanceStep.length > 0) {
+          this.calcPersoService.updateStepEnding(data.balanceStep);
+          let balanceStepIndex = data.balanceStep
+            .map((s: any) => {
+              if (s && s.label === stepName) return stepName;
+              else return null;
+            })
+            .indexOf(stepName);
+          if (
+            data.balanceStep[balanceStepIndex]?.questions &&
+            data.balanceStep[balanceStepIndex].questions.length > 0
+          )
+            this.transportForm = data.balanceStep[balanceStepIndex].questions;
+          else this.transportForm = [];
+          console.log(this.transportForm, this.balanceId);
+        }
+      },
+      (err) => {}
+    );
   }
 
   add_row(modal: any) {
-    this.modalService.open(modal, {ariaLabelledBy: 'modal-basic-title'});
+    this.modalService.open(modal, { ariaLabelledBy: 'modal-basic-title' });
   }
 
-  async onSubmit(){
+  async onSubmit() {
     const form = this.formRaw.getRawValue();
-    await this.transportForm.push(this.calcPersoService.parseTransportForm(form));
-    console.log(this.transportForm ,this.calcPersoService.parseTransportForm(form))
-    this.calcPersoService.updateStepBalance("transport", this.transportForm, this.balanceId)
-    .subscribe(
-      (data) => {
-        
-        this.getStepBalance('transport');
-        this.modalService.dismissAll();
-        this.updateService.sendUpdate('new transport field');
-      }, (err) => {
-        
-      })
+    await this.transportForm.push(
+      this.calcPersoService.parseTransportForm(form)
+    );
+    console.log(
+      this.transportForm,
+      this.calcPersoService.parseTransportForm(form)
+    );
+    this.calcPersoService
+      .updateStepBalance('transport', this.transportForm, this.balanceId)
+      .subscribe(
+        (data) => {
+          this.getStepBalance('transport');
+          this.modalService.dismissAll();
+          this.updateService.sendUpdate('new transport field');
+        },
+        (err) => {}
+      );
   }
 
   deleteOne(id: number) {
     this.transportForm.splice(id, 1);
-    this.calcPersoService.deleteRow("transport", id, this.balanceId)
-    .subscribe(
+    this.calcPersoService.deleteRow('transport', id, this.balanceId).subscribe(
       (data) => {
         this.updateService.sendUpdate('new transport field');
-      }, (err) => {
-      })
+      },
+      (err) => {}
+    );
   }
 
-  nextStep(){
-    this.router.navigate(['/calculette-perso/questionnaire/alimentation']);
+  nextStep() {
+    this.router.navigate(['/calculette-perso/questionnaire/numerique']);
   }
 
-  previousStep(){
+  previousStep() {
     this.router.navigate(['/calculette-perso/questionnaire/workplace']);
   }
 }
