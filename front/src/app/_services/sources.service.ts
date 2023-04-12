@@ -7,28 +7,29 @@ const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
 };
 
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SourcesService {
-
-  constructor(private http: HttpClient){}
+  constructor(private http: HttpClient) {}
 
   importFile(indices: any) {
     const userId = window.localStorage.getItem('userId');
-    return this.http.post(environment.AUTH_API + 'user/' + userId + '/sources/file/excel',{
-        indices
+    return this.http.post(
+      environment.AUTH_API + 'user/' + userId + '/sources/file/excel',
+      {
+        indices,
       },
       httpOptions
     );
   }
 
   allIndices() {
+    console.log('allIndices');
     const userId = window.localStorage.getItem('userId');
-    return this.http.get(environment.AUTH_API + 'user/' + userId + '/sources',
+    return this.http.get(
+      environment.AUTH_API + 'user/' + userId + '/sources',
       httpOptions
     );
   }
-
 }

@@ -1,26 +1,56 @@
-<h2 class="titleParti" style="margin-top: 5%;">{{ "calcperso.tform1" | translate }}</h2>
-<form name="form" [formGroup]="this.calcpersoForm1" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
-  <hr>
-  <h4 class="subTitleParti">{{'calcperso.f1t' | translate}}</h4>
+<h2 class="titleParti" style="margin-top: 5%">
+  {{ "calcperso.tform1" | translate }}
+</h2>
+<form
+  name="form"
+  [formGroup]="this.calcpersoForm1"
+  (ngSubmit)="f.form.valid && onSubmit()"
+  #f="ngForm"
+  novalidate
+>
+  <hr />
+  <h4 class="subTitleParti">{{ "calcperso.f1t" | translate }}</h4>
   <div class="form-group">
-    <label for="text"  >{{ "calcperso.f1i1" | translate }}</label>
-    <div style="display: flex; gap:10px">
+    <label for="text">{{ "calcperso.f1i1" | translate }}</label>
+    <div style="display: flex; gap: 10px">
       <span>0</span>
-      <input type="range" class="form-range" name="distanceWorkDays" formControlName="distanceWorkDays" min="0" max="7" #nbr1 id="time" >
+      <input
+        type="range"
+        class="form-range"
+        name="distanceWorkDays"
+        formControlName="distanceWorkDays"
+        min="0"
+        max="7"
+        #nbr1
+        id="time"
+      />
       <span>{{ nbr1.value }}</span>
     </div>
   </div>
   <div class="form-group">
-    <label for="text"  >{{ "calcperso.f1i2" | translate }}</label>
-    <div style="display: flex; gap:10px">
+    <label for="text">{{ "calcperso.f1i2" | translate }}</label>
+    <div style="display: flex; gap: 10px">
       <span>0</span>
-      <input type="range" class="form-range"  name="distanceWorkHeater" formControlName="distanceWorkHeater" min="0" max="24" #nbr2 id="time" >
+      <input
+        type="range"
+        class="form-range"
+        name="distanceWorkHeater"
+        formControlName="distanceWorkHeater"
+        min="0"
+        max="24"
+        #nbr2
+        id="time"
+      />
       <span>{{ nbr2.value }}</span>
     </div>
   </div>
   <div class="form-group">
-    <label for="text" >{{ "calcperso.f1i3" | translate }}</label>
-    <select class="form-select" name="distanceWorkHeaterType" formControlName="distanceWorkHeaterType">
+    <label for="text">{{ "calcperso.f1i3" | translate }}</label>
+    <select
+      class="form-select"
+      name="distanceWorkHeaterType"
+      formControlName="distanceWorkHeaterType"
+    >
       <option value="gaz">{{ "calcperso.f1i3.2" | translate }}</option>
       <option value="fioul">{{ "calcperso.f1i3.3" | translate }}</option>
       <option value="electricity">{{ "calcperso.f1i3.4" | translate }}</option>
@@ -28,50 +58,102 @@
     </select>
   </div>
   <div class="form-group">
-    <label for="text"  >{{ "calcperso.f1i4" | translate }}</label>
-    <div style="display: flex; gap:10px">
+    <label for="text">{{ "calcperso.f1i4" | translate }}</label>
+    <div style="display: flex; gap: 10px">
       <span>0</span>
-      <input type="range" class="form-range"  name="distanceWorkAirConditionner" formControlName="distanceWorkAirConditionner" min="0" max="24" #nbr3 id="time" >
+      <input
+        type="range"
+        class="form-range"
+        name="distanceWorkAirConditionner"
+        formControlName="distanceWorkAirConditionner"
+        min="0"
+        max="24"
+        #nbr3
+        id="time"
+      />
       <span>{{ nbr3.value }}</span>
     </div>
   </div>
-  <hr>
-  <h4 class="subTitleParti">{{'calcperso.f2t' | translate}}</h4>
+  <hr />
+  <h4 class="subTitleParti">{{ "calcperso.f2t" | translate }}</h4>
   <div class="form-group">
-    <label for="text"  >{{ "calcperso.f2i1" | translate }}</label>
-    <div style="display: flex; gap:10px">
+    <label for="text">{{ "calcperso.f2i1" | translate }}</label>
+    <div style="display: flex; gap: 10px">
       <span>0</span>
-      <input type="range" class="form-range"  name="presentielWork" formControlName="presentielWork" min="0" max="7" #nbr4 id="time" >
+      <input
+        type="range"
+        class="form-range"
+        name="presentielWork"
+        formControlName="presentielWork"
+        min="0"
+        max="7"
+        #nbr4
+        id="time"
+      />
       <span>{{ nbr4.value }}</span>
     </div>
   </div>
   <div class="form-group">
-    <label for="text" >{{ "calcperso.f2i2" | translate }}</label>
-    <select class="form-control" name="presentielWorkType" formControlName="presentielWorkType">
-      <option value="singleOffice1">{{ "calcperso.f2i2.2" | translate }}</option>
-      <option value="singleOffice2">{{ "calcperso.f2i2.3" | translate }}</option>
+    <label for="text">{{ "calcperso.f2i2" | translate }}</label>
+    <select
+      class="form-control"
+      name="presentielWorkType"
+      formControlName="presentielWorkType"
+    >
+      <option value="singleOffice1">
+        {{ "calcperso.f2i2.2" | translate }}
+      </option>
+      <option value="singleOffice2">
+        {{ "calcperso.f2i2.3" | translate }}
+      </option>
       <option value="coworking1">{{ "calcperso.f2i2.4" | translate }}</option>
       <option value="coworking2">{{ "calcperso.f2i2.5" | translate }}</option>
     </select>
   </div>
-  <hr>
-  <h4 class="subTitleParti">{{'calcperso.f3t' | translate}}</h4>
+  <hr />
+  <h4 class="subTitleParti">{{ "calcperso.f3t" | translate }}</h4>
   <div class="form-group">
-    <label for="text"  >{{ "calcperso.f3i1" | translate }}</label>
-    <div style="display: flex; gap:10px">
+    <label for="text">{{ "calcperso.f3i1" | translate }}</label>
+    <div style="display: flex; gap: 10px">
       <span>0</span>
-      <input type="range" class="form-range" name="hotelNuitNb" formControlName="hotelNuitNb" min="0" max="365" #nbr5 id="time" >
+      <input
+        type="range"
+        class="form-range"
+        name="hotelNuitNb"
+        formControlName="hotelNuitNb"
+        min="0"
+        max="365"
+        #nbr5
+        id="time"
+      />
       <span>{{ nbr5.value }}</span>
     </div>
   </div>
   <div class="form-group">
-    <input type="radio" class="form-check-input" name="hotelType" formControlName="hotelType" value="traditionnal_hotel"  >
-    <label for="text"  class="form-check-label">{{ "calcperso.f3i2.1" | translate }}</label>
+    <input
+      type="radio"
+      class="form-check-input"
+      name="hotelType"
+      formControlName="hotelType"
+      value="traditionnal_hotel"
+    />
+    <label for="text" class="form-check-label">{{
+      "calcperso.f3i2.1" | translate
+    }}</label>
   </div>
   <div class="form-group">
-    <input type="radio" class="form-check-input" name="hotelType" formControlName="hotelType" value="local_hotel" >
-    <label for="text" class="form-check-label">{{ "calcperso.f3i2.2" | translate }}</label>
+    <input
+      type="radio"
+      class="form-check-input"
+      name="hotelType"
+      formControlName="hotelType"
+      value="local_hotel"
+    />
+    <label for="text" class="form-check-label">{{
+      "calcperso.f3i2.2" | translate
+    }}</label>
   </div>
-  <button type="submit" class="btn btn-primary"  value="first_form_calcperso">{{ 'calcperso.next' | translate }}</button>
+  <button type="submit" class="btn btn-primary" value="first_form_calcperso">
+    {{ "calcperso.next" | translate }}
+  </button>
 </form>
-

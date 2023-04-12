@@ -1,113 +1,231 @@
-<h2 class="titleParti" style="margin-top: 5%;">{{'calcperso.tform4' | translate}}</h2>
-<form name="form" [formGroup]="this.calcpersoForm4" (ngSubmit)="f.form.valid" #f="ngForm" novalidate>              
-    <h4 style="color: #f16e00" >{{'calcperso.alimentation1' | translate}}</h4>
-    <br>
+<h2 class="titleParti" style="margin-top: 5%">
+  {{ "calcperso.tform4" | translate }}
+</h2>
+<form
+  name="form"
+  [formGroup]="this.calcpersoForm4"
+  (ngSubmit)="f.form.valid && onSubmit()"
+  #f="ngForm"
+  novalidate
+>
+  <h4 style="color: #f16e00">{{ "calcperso.alimentation1" | translate }}</h4>
+  <br />
+  <div class="row">
+    <div class="col-sm-6">
+      <label>{{ "calcperso.alimentation2" | translate }}</label>
+      <div class="form-group">
+        <select
+          class="form-select"
+          name="viandeRouge"
+          formControlName="viandeRouge"
+        >
+          <option value="0">0</option>
+          <option
+            *ngFor="let i of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; index"
+            [value]="i"
+          >
+            {{ i }}
+          </option>
+        </select>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <label>{{ "calcperso.alimentation3" | translate }}</label>
+      <div class="form-group">
+        <select
+          class="form-select"
+          name="viandeBlanche"
+          formControlName="viandeBlanche"
+        >
+          <option value="0">0</option>
+          <option
+            *ngFor="let i of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; index"
+            [value]="i"
+          >
+            {{ i }}
+          </option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6">
+      <label>{{ "calcperso.alimentation4" | translate }}</label>
+      <div class="form-group">
+        <select
+          class="form-select"
+          name="fruitsSaison"
+          formControlName="fruitsSaison"
+        >
+          <option value="0">0</option>
+          <option
+            *ngFor="let i of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; index"
+            [value]="i"
+          >
+            {{ i }}
+          </option>
+        </select>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <label>{{ "calcperso.alimentation5" | translate }}</label>
+      <div class="form-group">
+        <select
+          class="form-select"
+          name="fruitsHorsSaison"
+          formControlName="fruitsHorsSaison"
+        >
+          <option value="0">0</option>
+          <option
+            *ngFor="let i of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; index"
+            [value]="i"
+          >
+            {{ i }}
+          </option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div>
+    <label>{{ "calcperso.alimentation6" | translate }}</label>
     <div class="row">
-        <div class="col-sm-6">
-            <label >{{'calcperso.alimentation2' | translate}}</label>
-            <div class="form-group">
-                <select class="form-select" name="viandeRouge" formControlName="viandeRouge">
-                    <option value="0">0</option>
-                    <option *ngFor="let i of [1,2,3,4,5,6,7,8,9,10]; index" [value]="i">{{i}}</option>
-                </select>
-            </div>
+      <div class="col-sm-3">
+        <label>{{ "calcperso.alimentation15" | translate }}</label>
+        <div class="w-75">
+          <input
+            type="number"
+            class="form-control"
+            name="lait"
+            formControlName="lait"
+            min="0"
+            max="100"
+          />
         </div>
-        <div class="col-sm-6">
-            <label >{{'calcperso.alimentation3' | translate}}</label>
-            <div class="form-group">
-                <select class="form-select" name="viandeBlanche" formControlName="viandeBlanche">
-                    <option value="0">0</option>
-                    <option *ngFor="let i of [1,2,3,4,5,6,7,8,9,10]; index" [value]="i" >{{i}}</option>
-                </select>
-            </div>
+      </div>
+      <div class="col-sm-3">
+        <label>{{ "calcperso.alimentation7" | translate }}</label>
+        <div class="w-75">
+          <input
+            type="number"
+            class="form-control"
+            name="fromage"
+            formControlName="fromage"
+            min="0"
+            max="100"
+          />
         </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-6">
-            <label >{{'calcperso.alimentation4' | translate}}</label>
-            <div class="form-group">
-                <select class="form-select" name="fruitsSaison" formControlName="fruitsSaison">
-                    <option value="0">0</option>
-                    <option *ngFor="let i of [1,2,3,4,5,6,7,8,9,10]; index" [value]="i" >{{i}}</option>
-                </select>
-            </div>
+      </div>
+      <div class="col-sm-3">
+        <label>{{ "calcperso.alimentation8" | translate }}</label>
+        <div class="w-75">
+          <input
+            type="number"
+            class="form-control"
+            name="yaourts"
+            formControlName="yaourts"
+            min="0"
+            max="100"
+          />
         </div>
-        <div class="col-sm-6">
-            <label >{{'calcperso.alimentation5' | translate}}</label>
-            <div class="form-group">
-                <select class="form-select"  name="fruitsHorsSaison" formControlName="fruitsHorsSaison">
-                    <option value="0">0</option>
-                    <option *ngFor="let i of [1,2,3,4,5,6,7,8,9,10]; index" [value]="i" >{{i}}</option>
-                </select>
-            </div>
+      </div>
+      <div class="col-sm-3">
+        <label>{{ "calcperso.alimentation9" | translate }}</label>
+        <div class="w-75">
+          <input
+            type="number"
+            class="form-control"
+            name="creme"
+            formControlName="creme"
+            min="0"
+            max="100"
+          />
         </div>
+      </div>
     </div>
-    <div>
-        <label >{{'calcperso.alimentation6' | translate}}</label>
-        <div class="row">
-            <div class="col-sm-3">
-                <label >{{'calcperso.alimentation15' | translate}}</label>
-                <div class="w-75">
-                    <input type="number" class="form-control" name="lait" formControlName="lait" min="0" max="100" >
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <label >{{'calcperso.alimentation7' | translate}}</label>
-                <div class="w-75">
-                    <input type="number" class="form-control" name="fromage" formControlName="fromage" min="0" max="100" >
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <label >{{'calcperso.alimentation8' | translate}}</label>
-                <div class="w-75">
-                    <input type="number" class="form-control" name="yaourts" formControlName="yaourts" min="0" max="100" >
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <label >{{'calcperso.alimentation9' | translate}}</label>
-                <div class="w-75">
-                    <input type="number" class="form-control" name="creme" formControlName="creme" min="0" max="100" >
-                </div>
-            </div>
-        </div>
-    </div>
-    <br>
-    <div class="form-group">
-        <label >{{'calcperso.alimentation10' | translate}}</label>
-        <select class="form-select" name="nbRepasVegan" formControlName="nbRepasVegan">
-            <option value="0">0</option>
-            <option *ngFor="let i of [1,2,3,4,5,6,7,8,9,10]; index" [value]="i" >{{i}}</option>
-        </select>
-    </div>
-    <div class="form-group">
-        <label>{{'calcperso.alimentation11' | translate}}</label>
-        <select class="form-select" name="poisson" formControlName="poisson">
-            <option value="0">0</option>
-            <option *ngFor="let i of [1,2,3,4,5,6,7,8,9,10]; index" [value]="i" >{{i}}</option>
-        </select>
-    </div> 
-    <div class="form-group">
-        <label>{{'calcperso.alimentation12' | translate}}</label>
-        <select class="form-select" name="prepaCafe" formControlName="prepaCafe">
-            <option selected>{{'calcperso.alimentation12.1' | translate}}</option>
-            <option value="cafeMachine" >{{'calcperso.alimentation12.2' | translate}}</option>
-            <option value="cafePasMachine" >{{'calcperso.alimentation12.3' | translate}}</option>
-            <option value="3" >{{'calcperso.alimentation12.4' | translate}}</option>
-        </select>
-    </div>
-    <label>{{'calcperso.alimentation13' | translate}}</label>
-    <div style="display: flex; gap:10px">
-        <span>0</span>
-        <input type="range" class="form-range" name="nbCafe" formControlName="nbCafe" min="0" max="100" #nbrc  >
-        <span>{{ nbrc.value }}</span>
-    </div>
-    <label>{{'calcperso.alimentation14' | translate}}</label>
-    <div style="display: flex; gap:10px">
-        <span>0</span>
-        <input type="range" class="form-range" name="nbChoco" formControlName="nbChoco" min="0" max="100" #nbrch  >
-        <span>{{ nbrch.value }}</span>
-    </div>
-    <button  class="btn btn-secondary" style="margin-right: 20px ;" (click)="previousStep()">{{ 'calcperso.previous' | translate }}</button>
-    <button type="submit" class="btn btn-primary"  (click)="onSubmit()" value="fourth_form_calcperso">{{ 'calcperso.next' | translate }}</button>
+  </div>
+  <br />
+  <div class="form-group">
+    <label>{{ "calcperso.alimentation10" | translate }}</label>
+    <select
+      class="form-select"
+      name="nbRepasVegan"
+      formControlName="nbRepasVegan"
+    >
+      <option value="0">0</option>
+      <option
+        *ngFor="let i of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; index"
+        [value]="i"
+      >
+        {{ i }}
+      </option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>{{ "calcperso.alimentation11" | translate }}</label>
+    <select class="form-select" name="poisson" formControlName="poisson">
+      <option value="0">0</option>
+      <option
+        *ngFor="let i of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; index"
+        [value]="i"
+      >
+        {{ i }}
+      </option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>{{ "calcperso.alimentation12" | translate }}</label>
+    <select class="form-select" name="prepaCafe" formControlName="prepaCafe">
+      <option selected>{{ "calcperso.alimentation12.1" | translate }}</option>
+      <option value="cafeMachine">
+        {{ "calcperso.alimentation12.2" | translate }}
+      </option>
+      <option value="cafePasMachine">
+        {{ "calcperso.alimentation12.3" | translate }}
+      </option>
+      <option value="3">{{ "calcperso.alimentation12.4" | translate }}</option>
+    </select>
+  </div>
+  <label>{{ "calcperso.alimentation13" | translate }}</label>
+  <div style="display: flex; gap: 10px">
+    <span>0</span>
+    <input
+      type="range"
+      class="form-range"
+      name="nbCafe"
+      formControlName="nbCafe"
+      min="0"
+      max="100"
+      #nbrc
+    />
+    <span>{{ nbrc.value }}</span>
+  </div>
+  <label>{{ "calcperso.alimentation14" | translate }}</label>
+  <div style="display: flex; gap: 10px">
+    <span>0</span>
+    <input
+      type="range"
+      class="form-range"
+      name="nbChoco"
+      formControlName="nbChoco"
+      min="0"
+      max="100"
+      #nbrch
+    />
+    <span>{{ nbrch.value }}</span>
+  </div>
+  <button
+    class="btn btn-secondary"
+    style="margin-right: 20px"
+    (click)="previousStep()"
+  >
+    {{ "calcperso.previous" | translate }}
+  </button>
+  <button
+    type="submit"
+    class="btn btn-primary"
+    value="fourth_form_calcperso"
+    (click)="nextStep()"
+  >
+    {{ "calcperso.next" | translate }}
+  </button>
 </form>
-

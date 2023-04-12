@@ -1,90 +1,181 @@
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-<h2 class="titleParti" style="margin-top: 5%;">{{'calcperso.tform2' | translate}}</h2>
-<p class="transpDesc">{{'calcperso.transpDesc' | translate}}</p>
-<button  class="btn btn-primary custom-add-button"  (click)="add_row(questModal)" type="button">{{'calcperso.addtranspbtn' | translate}}</button>
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
+/>
+<h2 class="titleParti" style="margin-top: 5%">
+  {{ "calcperso.tform2" | translate }}
+</h2>
+<p class="transpDesc">{{ "calcperso.transpDesc" | translate }}</p>
+<button
+  class="btn btn-primary custom-add-button"
+  (click)="add_row(questModal)"
+  type="button"
+>
+  {{ "calcperso.addtranspbtn" | translate }}
+</button>
 <table class="table table-striped">
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">{{'calcperso.transpCol1' | translate}}</th>
-      <th scope="col">{{'calcperso.transpCol2' | translate}}</th>
+      <th scope="col">{{ "calcperso.transpCol1" | translate }}</th>
+      <th scope="col">{{ "calcperso.transpCol2" | translate }}</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let transport of transportForm ; index as i">
+    <tr *ngFor="let transport of transportForm; index as i">
       <th scope="row">{{ i + 1 }}</th>
       <td>
-        {{ transport.label}}
+        {{ transport.label }}
       </td>
       <td>{{ transport.resp | number }}</td>
       <td>
         <a (click)="deleteOne(i)">
-          <img src="../../../assets/icons/cross-svgrepo-com.svg"  alt="" aria-hidden="true" width="12" height="12">
+          <img
+            src="../../../assets/icons/cross-svgrepo-com.svg"
+            alt=""
+            aria-hidden="true"
+            width="12"
+            height="12"
+          />
         </a>
       </td>
     </tr>
   </tbody>
 </table>
-<button  class="btn btn-secondary" style="margin-right: 20px;"  (click)="previousStep()" value="second_form_calcperso">{{ 'calcperso.previous' | translate }}</button>
-<button  class="btn btn-primary" (click)="nextStep()" value="second_form_calcperso">{{ 'calcperso.next' | translate }}</button>
+<button
+  class="btn btn-secondary"
+  style="margin-right: 20px"
+  (click)="previousStep()"
+  value="second_form_calcperso"
+>
+  {{ "calcperso.previous" | translate }}
+</button>
+<button
+  class="btn btn-primary"
+  (click)="nextStep()"
+  value="second_form_calcperso"
+>
+  {{ "calcperso.next" | translate }}
+</button>
 
-<!-- frormulaire ajout ligne transport -->
+<!-- formulaire ajout ligne transport -->
 <ng-template #questModal let-modal>
-  <form name="form" [formGroup]="this.formRaw" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
-    <div class="modal-header" style="padding: 10px; margin: 15px;">
-      <h4 style="color:grey" class="modal-title" id="exampleModalLabel">{{'calcperso.transpT1' | translate}}</h4>
+  <form
+    name="form"
+    [formGroup]="this.formRaw"
+    (ngSubmit)="f.form.valid && onSubmit()"
+    #f="ngForm"
+    novalidate
+  >
+    <div class="modal-header" style="padding: 10px; margin: 15px">
+      <h4 style="color: grey" class="modal-title" id="exampleModalLabel">
+        {{ "calcperso.transpT1" | translate }}
+      </h4>
     </div>
     <div class="modal-body">
-      <label for="">{{'calcperso.transpT2' | translate}}</label>
-      <select class="form-select" #selectTransport name="trasportType" formControlName="type" required>
+      <label for="">{{ "calcperso.transpT2" | translate }}</label>
+      <select
+        class="form-select"
+        #selectTransport
+        name="trasportType"
+        formControlName="type"
+        required
+      >
         <option selected>Select</option>
-        <option value="car">{{'calcperso.transpModal1' | translate}}</option>
+        <option value="car">{{ "calcperso.transpModal1" | translate }}</option>
         <option value="train">TGV INOUI, TGV Lyria,OUIGO</option>
         <option value="eurostar">Eurostar</option>
         <option value="thalys">Thalys</option>
         <option value="ter">TER</option>
-        <option value="plane">{{'calcperso.transpModal3' | translate}}</option>
-        <option value="bike">{{'calcperso.transpModal4' | translate}}</option>
-        <option value="bus">{{'calcperso.transpModal5' | translate}}</option>
-        <option value="subway">{{'calcperso.transpModal6' | translate}}</option>
-        <option value="moto">{{'calcperso.transpModal7' | translate}}</option>
-        <option value="scooter">{{'calcperso.transpModal8' | translate}}</option>
-        <option value="carpooling">{{'calcperso.transpModal9' | translate}}</option>
+        <option value="plane">
+          {{ "calcperso.transpModal3" | translate }}
+        </option>
+        <option value="bike">{{ "calcperso.transpModal4" | translate }}</option>
+        <option value="bus">{{ "calcperso.transpModal5" | translate }}</option>
+        <option value="subway">
+          {{ "calcperso.transpModal6" | translate }}
+        </option>
+        <option value="moto">{{ "calcperso.transpModal7" | translate }}</option>
+        <option value="scooter">
+          {{ "calcperso.transpModal8" | translate }}
+        </option>
+        <option value="carpooling">
+          {{ "calcperso.transpModal9" | translate }}
+        </option>
       </select>
-      
-      <div *ngIf="selectTransport.value == 'car' || selectTransport.value == 'carpooling' || selectTransport.value =='moto'">
-        <label for="">{{'calcperso.transpE' | translate}}</label>
+
+      <div
+        *ngIf="
+          selectTransport.value == 'car' ||
+          selectTransport.value == 'carpooling' ||
+          selectTransport.value == 'moto'
+        "
+      >
+        <label for="">{{ "calcperso.transpE" | translate }}</label>
         <select class="form-select" name="subtype" formControlName="subtype">
-          <option value="electric" selected>{{'calcperso.transpE1' | translate}}</option>
+          <option value="electric" selected>
+            {{ "calcperso.transpE1" | translate }}
+          </option>
           <option value="diesel">Gazoil</option>
           <option value="essence">Essence</option>
           <option value="gpl">GPL</option>
           <option value="e85">E85</option>
-          <option value="hybrid">{{'calcperso.transpE3' | translate}}</option>
-          <option value="hybridR">Hybrid rechargeable</option>
-        </select><br>
+          <option value="hybrid">{{ "calcperso.transpE3" | translate }}</option>
+          <option value="hybridR">Hybrid rechargeable</option></select
+        ><br />
       </div>
-        <div *ngIf="selectTransport.value == 'carpooling'">
-          <label for="">{{'calcperso.transpC' | translate}}</label>
-          <input  type="number" min="1" class="form-control" name="subtype2" formControlName="subtype2">
-        </div>
-      <br>
-      
+      <div *ngIf="selectTransport.value == 'carpooling'">
+        <label for="">{{ "calcperso.transpC" | translate }}</label>
+        <input
+          type="number"
+          min="1"
+          class="form-control"
+          name="subtype2"
+          formControlName="subtype2"
+        />
+      </div>
+      <br />
+
       <div *ngIf="selectTransport.value == 'plane'">
         <select class="form-select" name="subtype" formControlName="subtype">
           <option selected>Select</option>
-          <option value="long-courrier">{{'calcperso.transpA1' | translate}}</option>
-          <option value="moyen-courrier">{{'calcperso.transpA2' | translate}}</option>
-          <option value="national">{{'calcperso.transpA3' | translate}}</option>
-        </select> 
+          <option value="long-courrier">
+            {{ "calcperso.transpA1" | translate }}
+          </option>
+          <option value="moyen-courrier">
+            {{ "calcperso.transpA2" | translate }}
+          </option>
+          <option value="national">
+            {{ "calcperso.transpA3" | translate }}
+          </option>
+        </select>
       </div>
-      <label for="">{{'calcperso.transpT3' | translate}}</label>
-      <input type="number" class="form-control" min="0" name="distanceValue" formControlName="distance" required>
+      <label for="">{{ "calcperso.transpT3" | translate }}</label>
+      <input
+        type="number"
+        class="form-control"
+        min="0"
+        name="distanceValue"
+        formControlName="distance"
+        required
+      />
     </div>
 
     <div class="modal-footer">
-      <button type="submit" class="btn btn-primary"  value="second_form_calcperso">{{ 'calcperso.fsub' | translate }}</button>
-      <button type="button" class="btn btn-secondary" (click)="modal.dismiss('Close click')">{{'calcperso.close' | translate}}</button>
+      <button
+        type="submit"
+        class="btn btn-primary"
+        value="second_form_calcperso"
+      >
+        {{ "calcperso.fsub" | translate }}
+      </button>
+      <button
+        type="button"
+        class="btn btn-secondary"
+        (click)="modal.dismiss('Close click')"
+      >
+        {{ "calcperso.close" | translate }}
+      </button>
     </div>
   </form>
 </ng-template>

@@ -1,53 +1,135 @@
-<h2 class="titleParti" style="margin-top: 5%;">{{'calcperso.tform5' | translate}}</h2>
-<form name="form" [formGroup]="this.calcpersoForm5" (ngSubmit)="f.form.valid" #f="ngForm" novalidate>
-    <div>
-        <label for="row">{{'calcperso.achatQ1' | translate}}</label><br><br>
-        <div class="row" style="margin-bottom: 10px;">
-            <div class="col-sm-3">
-                <label for="livre">{{'calcperso.tachatI1' | translate}}</label>
-                <div class="w-75">
-                    <input type="number" class="form-control" name="nbLivre" formControlName="nbLivre" min="0" max="100">
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <label for="tshirt">{{'calcperso.tachatI2' | translate}}</label>
-                <div class="w-75">
-                    <input type="number" class="form-control" name="nbTshirt" formControlName="nbTshirt" min="0" max="100">
-                </div>
-            </div>
-            <div class="col-sm-6">
-                <label for="fourniture">{{'calcperso.tachatI3' | translate}}</label>
-                <div class="w-50">
-                    <input type="number" class="form-control" name="nbFourniture" formControlName="nbFourniture" min="0" max="100">
-                </div>
-            </div>
+<h2 class="titleParti" style="margin-top: 5%">
+  {{ "calcperso.tform5" | translate }}
+</h2>
+<form
+  name="form"
+  [formGroup]="this.calcpersoForm5"
+  (ngSubmit)="f.form.valid && onSubmit()"
+  #f="ngForm"
+  novalidate
+>
+  <div>
+    <label for="row">{{ "calcperso.achatQ1" | translate }}</label
+    ><br /><br />
+    <div class="row" style="margin-bottom: 10px">
+      <div class="col-sm-3">
+        <label for="livre">{{ "calcperso.tachatI1" | translate }}</label>
+        <div class="w-75">
+          <input
+            type="number"
+            class="form-control"
+            name="nbLivre"
+            formControlName="nbLivre"
+            min="0"
+            max="100000"
+          />
         </div>
-        <div>
-            <div class="row" style="margin-bottom: 10px;">
-                <div class="col-sm-6">
-                    <label for="conseil">{{'calcperso.tachatI4' | translate}}</label>
-                    <div class="w-50">
-                        <input type="number" class="form-control" name="prixConseils" formControlName="prixConseils" min="0" max="100000">
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <label for="associations">{{'calcperso.tachatI5' | translate}}</label>
-                    <div class="w-50">
-                        <input type="number" class="form-control" name="donsAsso" formControlName="donsAsso" min="0" max="100000">
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-12">
-                    <label for="communication">{{'calcperso.tachatI6' | translate}}</label>
-                    <div class="w-25">
-                        <input type="number" class="form-control" name="prixComService" formControlName="prixComService" min="0" max="100">
-                    </div>
-                </div>
-            </div>
+      </div>
+      <div class="col-sm-3">
+        <label for="tshirt">{{ "calcperso.tachatI2" | translate }}</label>
+        <div class="w-75">
+          <input
+            type="number"
+            class="form-control"
+            name="nbTshirt"
+            formControlName="nbTshirt"
+            min="0"
+            max="100000"
+          />
         </div>
+      </div>
+      <div class="col-sm-6">
+        <label for="fourniture">{{ "calcperso.tachatI3" | translate }}</label>
+        <div class="w-50">
+          <input
+            type="number"
+            class="form-control"
+            name="nbFourniture"
+            formControlName="nbFourniture"
+            min="0"
+            max="100000"
+          />
+        </div>
+      </div>
     </div>
-    <button  class="btn btn-secondary" style="margin-right: 20px ;" (click)="previousStep()" >{{ 'calcperso.previous' | translate }}</button>
-    <button type="submit" class="btn btn-primary" (click)="onSubmit()" value="first_form_calcperso">{{'calcperso.submit' | translate}}</button>
+    <div>
+      <div class="row" style="margin-bottom: 10px">
+        <div class="col-sm-6">
+          <label for="conseil">{{ "calcperso.tachatI4" | translate }}</label>
+          <div class="w-50">
+            <input
+              type="number"
+              class="form-control"
+              name="prixConseils"
+              formControlName="prixConseils"
+              min="0"
+              max="100000"
+            />
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <label for="associations">{{
+            "calcperso.tachatI5" | translate
+          }}</label>
+          <div class="w-50">
+            <input
+              type="number"
+              class="form-control"
+              name="donsAsso"
+              formControlName="donsAsso"
+              min="0"
+              max="100000"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <label for="communication">{{
+            "calcperso.tachatI6" | translate
+          }}</label>
+          <div class="w-25">
+            <input
+              type="number"
+              class="form-control"
+              name="prixComService"
+              formControlName="prixComService"
+              min="0"
+              max="100000"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <label for="feuille">{{ "calcperso.tachatI7" | translate }}</label>
+          <div class="w-25">
+            <input
+              type="number"
+              class="form-control"
+              name="papier"
+              formControlName="papier"
+              min="0"
+              max="100000"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button
+    class="btn btn-secondary"
+    style="margin-right: 20px"
+    (click)="previousStep()"
+  >
+    {{ "calcperso.previous" | translate }}
+  </button>
+  <button
+    type="submit"
+    class="btn btn-primary"
+    (click)="finishStep()"
+    value="first_form_calcperso"
+  >
+    {{ "calcperso.submit" | translate }}
+  </button>
 </form>
-

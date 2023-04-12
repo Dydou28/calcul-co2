@@ -1,70 +1,417 @@
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-<h2 class="titleParti" style="margin-top: 5%;">{{'calcperso.tform3' | translate}}</h2>
-<p class="numDesc">{{'calcperso.numDesc' | translate}}</p>
-<button  class="btn btn-primary custom-add-button"  (click)="add_row(questModal)" type="button">{{'calcperso.addnumbtn' | translate}}</button>
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
+/>
+<h2 class="titleParti" style="margin-top: 5%">
+  {{ "calcperso.tform3" | translate }}
+</h2>
+<p class="numDesc">{{ "calcperso.numDesc" | translate }}</p>
+<button
+  class="btn btn-primary custom-add-button"
+  (click)="add_row(questModal)"
+  type="button"
+>
+  {{ "calcperso.addnumbtn" | translate }}
+</button>
+
 <table class="table table-striped">
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">{{'calcperso.numCol1' | translate}}</th>
-      <th scope="col">{{'calcperso.numCol2' | translate}}</th>
+      <th scope="col">{{ "calcperso.numCol1" | translate }}</th>
+      <th scope="col">{{ "calcperso.numCol2" | translate }}</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let numerique of numeriqueForm; index as i">
-      <th scope="row">{{ i + 1 }}</th>
-      <td>
+      <th
+        *ngIf="
+          numerique.label != 'internetMobile' &&
+          numerique.label != 'internetDomicile' &&
+          numerique.label != 'internetBureau'
+        "
+        scope="row"
+      >
+        .
+      </th>
+      <td
+        *ngIf="
+          numerique.label != 'internetMobile' &&
+          numerique.label != 'internetDomicile' &&
+          numerique.label != 'internetBureau'
+        "
+      >
         {{ numerique.label }}
       </td>
-      <td>{{ numerique.resp }}</td>
-      <td>
+      <td
+        *ngIf="
+          numerique.label != 'internetMobile' &&
+          numerique.label != 'internetDomicile' &&
+          numerique.label != 'internetBureau'
+        "
+      >
+        {{ numerique.resp }}
+      </td>
+      <td
+        *ngIf="
+          numerique.label != 'internetMobile' &&
+          numerique.label != 'internetDomicile' &&
+          numerique.label != 'internetBureau'
+        "
+      >
         <a (click)="deleteOne(i)">
-          <img src="../../../assets/icons/cross-svgrepo-com.svg"  alt="" aria-hidden="true" width="12" height="12">
+          <img
+            src="../../../assets/icons/cross-svgrepo-com.svg"
+            alt=""
+            aria-hidden="true"
+            width="12"
+            height="12"
+          />
         </a>
       </td>
     </tr>
   </tbody>
 </table>
-<button  class="btn btn-secondary" style="margin-right: 20px ;" (click)="previousStep()">{{ 'calcperso.previous' | translate }}</button>
-<button  class="btn btn-primary" (click)="nextStep()" >{{ 'calcperso.next' | translate }}</button>
+<button
+  class="btn btn-primary custom-add-button"
+  (click)="add_rowbis(questModalbis)"
+  type="button"
+>
+  {{ "calcperso.addnumbtn1" | translate }}
+</button>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">{{ "calcperso.numCol4" | translate }}</th>
+      <th scope="col">{{ "calcperso.numCol5" | translate }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let numerique of numeriqueForm; index as a">
+      <th
+        *ngIf="
+          numerique.label == 'internetMobile' ||
+          numerique.label == 'internetDomicile' ||
+          numerique.label == 'internetBureau'
+        "
+        scope="row"
+      >
+        .
+      </th>
+      <td
+        *ngIf="
+          numerique.label == 'internetMobile' ||
+          numerique.label == 'internetDomicile' ||
+          numerique.label == 'internetBureau'
+        "
+      >
+        {{ numerique.label }}
+      </td>
+      <td
+        *ngIf="
+          numerique.label == 'internetMobile' ||
+          numerique.label == 'internetDomicile' ||
+          numerique.label == 'internetBureau'
+        "
+      >
+        {{ numerique.resp }}
+      </td>
+      <td
+        *ngIf="
+          numerique.label == 'internetMobile' ||
+          numerique.label == 'internetDomicile' ||
+          numerique.label == 'internetBureau'
+        "
+      >
+        <a (click)="deleteOnebis(a)">
+          <img
+            src="../../../assets/icons/cross-svgrepo-com.svg"
+            alt=""
+            aria-hidden="true"
+            width="12"
+            height="12"
+          />
+        </a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br />
+<br />
+<button
+  class="btn btn-secondary"
+  style="margin-right: 20px"
+  (click)="previousStep()"
+>
+  {{ "calcperso.previous" | translate }}
+</button>
+<button class="btn btn-primary" (click)="nextStep()">
+  {{ "calcperso.next" | translate }}
+</button>
 
-<!-- frormulaire ajout ligne transport -->
+<!-- formulaire ajout ligne numérique -->
 <ng-template #questModal let-modal>
-  <form name="form" [formGroup]="this.calcpersoForm3" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
-    <div class="modal-header" style="padding: 10px; margin: 15px;">
-      <h4 style="color:grey" class="modal-title" id="exampleModalLabel">{{'calcperso.numT1' | translate}}</h4>
+  <form
+    name="form"
+    [formGroup]="this.calcpersoForm3"
+    (ngSubmit)="f.form.valid && onSubmit()"
+    #f="ngForm"
+    novalidate
+  >
+    <div class="modal-header" style="padding: 10px; margin: 15px">
+      <h4 style="color: grey" class="modal-title" id="exampleModalLabel">
+        {{ "calcperso.numT1" | translate }}
+      </h4>
     </div>
     <div class="modal-body">
-      <label for="">{{'calcperso.numT2' | translate}}</label>
-      <select class="form-select" name="numeriqueType" formControlName="numeriqueType" required>
-        <option value="smartphone" selected>{{'calcperso.numModal1' | translate}}</option>
-        <option value="laptop">{{'calcperso.numModal2' | translate}}</option>
-        <option value="desktop">{{'calcperso.numModal3' | translate}}</option>
-        <option value="gamer">PC gamer</option>
-        <option value="screen">{{'calcperso.numModal4' | translate}}</option>
-        <option value="printej">Imprimante jet d'encre</option>
-        <option value="printel">Imprimante laser</option>
-
+      <label for="">{{ "calcperso.numT2" | translate }}</label>
+      <select
+        class="form-select"
+        #selectNumerique
+        name="numeriqueType"
+        formControlName="numeriqueType"
+        required
+      >
+        <option selected>Selectionnez</option>
+        <option value="Ecran">
+          {{ "calcperso.numModal1" | translate }}
+        </option>
+        <option value="Clavier">{{ "calcperso.numModal2" | translate }}</option>
+        <option value="Ordinateur">
+          {{ "calcperso.numModal3" | translate }}
+        </option>
+        <option value="Smartphone">
+          {{ "calcperso.numModal4" | translate }}
+        </option>
+        <option value="Tablette">
+          {{ "calcperso.numModal5" | translate }}
+        </option>
+        <option value="Imprimante">
+          {{ "calcperso.numModal6" | translate }}
+        </option>
+        <option value="Objet connecté">
+          {{ "calcperso.numModal7" | translate }}
+        </option>
       </select>
-      <label for="">{{'calcperso.numT3' | translate}}</label>
-      <input type="number" class="form-control" min="0" name="dataNb" formControlName="dataNb" required>
-      <label for="">{{'calcperso.numT4' | translate}}</label>
+
+      <div *ngIf="selectNumerique.value == 'Ecran'">
+        <label for="">{{ "calcperso.numT5" | translate }}</label>
+        <select
+          class="form-select"
+          #selectNumerique
+          name="category"
+          formControlName="category"
+        >
+          <option selected>Selectionnez</option>
+          <option value="21,5 pouces">
+            {{ "calcperso.numT5A" | translate }}
+          </option>
+          <option value="23,8 pouces">
+            {{ "calcperso.numT5B" | translate }}
+          </option>
+          <option value="geant">
+            {{ "calcperso.numT5C" | translate }}
+          </option>
+        </select>
+      </div>
+      <div *ngIf="selectNumerique.value == 'Ordinateur'">
+        <label for="">{{ "calcperso.numT5" | translate }}</label>
+        <select class="form-select" name="category" formControlName="category">
+          <option value="Fixe" selected>
+            {{ "calcperso.numT5D" | translate }}
+          </option>
+          <option value="Portable">
+            {{ "calcperso.numT5E" | translate }}
+          </option>
+          <option value="Haute Performance / Gamer">
+            {{ "calcperso.numT5F" | translate }}
+          </option>
+        </select>
+      </div>
+      <div *ngIf="selectNumerique.value == 'Smartphone'">
+        <label for="">{{ "calcperso.numT5" | translate }}</label>
+        <select class="form-select" name="category" formControlName="category">
+          <option value="Feature phone" selected>
+            {{ "calcperso.numT5G" | translate }}
+          </option>
+          <option value="Smart phone small 5pouces">
+            {{ "calcperso.numT5H" | translate }}
+          </option>
+          <option value="Smart phone 5pouces">
+            {{ "calcperso.numT5I" | translate }}
+          </option>
+          <option value="Smart phone large 5pouces">
+            {{ "calcperso.numT5J" | translate }}
+          </option>
+        </select>
+      </div>
+      <div *ngIf="selectNumerique.value == 'Imprimante'">
+        <label for="">{{ "calcperso.numT5" | translate }}</label>
+        <select class="form-select" name="category" formControlName="category">
+          <option value="Jet d'encre" selected>
+            {{ "calcperso.numT5L" | translate }}
+          </option>
+          <option value="Laser">
+            {{ "calcperso.numT5M" | translate }}
+          </option>
+          <option value="Multifonctionnel jet d'encre">
+            {{ "calcperso.numT5N" | translate }}
+          </option>
+        </select>
+      </div>
+      <div *ngIf="selectNumerique.value == 'Objet connecté'">
+        <label for="">{{ "calcperso.numT5" | translate }}</label>
+        <select class="form-select" name="category" formControlName="category">
+          <option value="Montre connecté" selected>
+            {{ "calcperso.numT5O" | translate }}
+          </option>
+          <option value="Enceinte">
+            {{ "calcperso.numT5P" | translate }}
+          </option>
+          <option value="Caméra">
+            {{ "calcperso.numT5Q" | translate }}
+          </option>
+          <option value="Thermostat">
+            {{ "calcperso.numT5R" | translate }}
+          </option>
+          <option value="Alarme">
+            {{ "calcperso.numT5S" | translate }}
+          </option>
+        </select>
+      </div>
+
+      <label for="">{{ "calcperso.numT3" | translate }}</label>
+      <input
+        type="number"
+        class="form-control"
+        min="0"
+        name="dataNb"
+        formControlName="dataNb"
+        required
+      />
+      <label for="">{{ "calcperso.numT6" | translate }}</label>
+      <input
+        type="number"
+        class="form-control"
+        min="0"
+        name="frequency"
+        formControlName="frequency"
+        required
+      />
+      <label for="">{{ "calcperso.numT4" | translate }}</label>
       <div class="form-check">
-        <input class="form-check-input" type="radio" name="deviceStatus" formControlName="deviceStatus" value="non-reconditionne">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="deviceStatus"
+          formControlName="deviceStatus"
+          value="reconditionné"
+        />
         <label class="form-check-label" for="flexRadioDefault1">
-          {{'calcperso.no' | translate}}
+          {{ "calcperso.yes" | translate }}
         </label>
       </div>
       <div class="form-check">
-        <input class="form-check-input" type="radio" name="deviceStatus" formControlName="deviceStatus" value="reconditionne" checked="true">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="deviceStatus"
+          formControlName="deviceStatus"
+          value="non-reconditionné"
+          checked="true"
+        />
         <label class="form-check-label" for="flexRadioDefault2">
-          {{'calcperso.yes' | translate}}
+          {{ "calcperso.no" | translate }}
         </label>
       </div>
     </div>
     <div class="modal-footer">
-      <button type="submit" class="btn btn-primary"  value="third_form_calcperso">{{ 'calcperso.fsub' | translate }}</button>
-      <button type="button" class="btn btn-secondary" (click)="modal.dismiss('Close click')">{{'calcperso.close' | translate}}</button>
+      <button
+        type="submit"
+        class="btn btn-primary"
+        value="third_form_calcperso"
+      >
+        {{ "calcperso.fsub" | translate }}
+      </button>
+      <button
+        type="button"
+        class="btn btn-secondary"
+        (click)="modal.dismiss('Close click')"
+      >
+        {{ "calcperso.close" | translate }}
+      </button>
+    </div>
+  </form>
+</ng-template>
+
+<ng-template #questModalbis let-modal>
+  <form
+    name="form"
+    [formGroup]="this.calcpersoForm3bis"
+    (ngSubmit)="f.form.valid && onSubmit1()"
+    #f="ngForm"
+    novalidate
+  >
+    <div class="modal-header" style="padding: 10px; margin: 15px">
+      <h4 style="color: grey" class="modal-title" id="exampleModalLabel">
+        {{ "calcperso.numT7" | translate }}
+      </h4>
+    </div>
+    <div class="modal-body">
+      <label for="">{{ "calcperso.numT8" | translate }}</label>
+      <select
+        class="form-select"
+        #selectNumerique
+        name="lineType"
+        formControlName="lineType"
+        required
+      >
+        <option selected>Selectionnez</option>
+        <option value="internetDomicile">
+          {{ "calcperso.numModal8" | translate }}
+        </option>
+        <option value="internetMobile">
+          {{ "calcperso.numModal9" | translate }}
+        </option>
+        <option value="internetBureau">
+          {{ "calcperso.numModal10" | translate }}
+        </option>
+      </select>
+      <label for="">{{ "calcperso.numT9" | translate }}</label>
+      <input
+        type="number"
+        class="form-control"
+        min="0"
+        name="lineNumber"
+        formControlName="lineNumber"
+        required
+      />
+      <!-- <label for="">{{ "calcperso.numT3" | translate }}</label>
+      <input
+        type="number"
+        class="form-control"
+        min="0"
+        name="dataNb"
+        formControlName="dataNb"
+        required
+      /> -->
+    </div>
+    <div class="modal-footer">
+      <button
+        type="submit"
+        class="btn btn-primary"
+        value="third_form_calcperso"
+      >
+        {{ "calcperso.fsub" | translate }}
+      </button>
+      <button
+        type="button"
+        class="btn btn-secondary"
+        (click)="modal.dismiss('Close click')"
+      >
+        {{ "calcperso.close" | translate }}
+      </button>
     </div>
   </form>
 </ng-template>
