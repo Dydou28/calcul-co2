@@ -180,10 +180,35 @@ export class CalcpersoService {
     };
   }
 
+  // parseNumeriqueForm(form: any) {
+  //   return {
+  //     label: form.numeriqueType + ' | ' + form.category,
+  //     resp: form.dataNb + ' | ' + form.frequency + ' | ' + form.deviceStatus,
+  //     totalCarbon: 0,
+  //   };
+  // }
+
   parseNumeriqueForm(form: any) {
     return {
-      label: form.numeriqueType + ' | ' + form.deviceStatus,
-      resp: form.dataNb,
+      label:
+        form.numeriqueType +
+        (form.category &&
+        (form.numeriqueType === 'Ecran' ||
+          form.numeriqueType === 'Ordinateur' ||
+          form.numeriqueType === 'Smartphone' ||
+          form.numeriqueType === 'Imprimante' ||
+          form.numeriqueType === 'Objet connecté')
+          ? ' | ' + form.category
+          : ''),
+      resp: form.dataNb + ' | ' + form.frequency + ' | ' + form.deviceStatus,
+      totalCarbon: 0,
+    };
+  }
+
+  parseNumeriqueForm1(form: any) {
+    return {
+      label: form.lineType,
+      resp: form.lineNumber,
       totalCarbon: 0,
     };
   }
@@ -288,6 +313,11 @@ export class CalcpersoService {
       {
         label: 'prixComService',
         resp: form.prixComService,
+        totalCarbon: 0,
+      },
+      {
+        label: 'papier',
+        resp: form.papier,
         totalCarbon: 0,
       },
     ];

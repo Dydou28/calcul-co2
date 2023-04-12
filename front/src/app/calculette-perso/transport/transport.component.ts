@@ -3,7 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
+import { SourcesService } from 'src/app/_services/sources.service';
 import { CalcpersoService } from 'src/app/_services/calcperso.service';
+import { serviceIndice } from 'src/app/_models/source.model';
 import { UpdateService } from 'src/app/_services/update.service';
 
 @Component({
@@ -30,6 +32,8 @@ export class TransportComponent implements OnInit {
     private router: Router,
     private updateService: UpdateService
   ) {}
+
+  conseil!: serviceIndice[];
 
   ngOnInit(): void {
     this.getStepBalance('transport');

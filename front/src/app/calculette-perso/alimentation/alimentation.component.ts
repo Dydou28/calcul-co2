@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { SourcesService } from 'src/app/_services/sources.service';
 import { CalcpersoService } from 'src/app/_services/calcperso.service';
+import { serviceIndice } from 'src/app/_models/source.model';
 import { UpdateService } from 'src/app/_services/update.service';
 
 @Component({
@@ -33,6 +35,8 @@ export class AlimentationComponent implements OnInit {
     private router: Router,
     private updateService: UpdateService
   ) {}
+
+  conseil!: serviceIndice[];
 
   ngOnInit(): void {
     this.calcPersoService.getStepBalance('alimentation').subscribe(
@@ -67,7 +71,7 @@ export class AlimentationComponent implements OnInit {
             poisson:
               data.balanceStep[balanceStepIndex]?.questions[9]?.resp || 0,
             prepaCafe:
-              data.balanceStep[balanceStepIndex]?.questions[10]?.resp || 0,
+              data.balanceStep[balanceStepIndex]?.questions[10]?.resp || '',
             nbCafe:
               data.balanceStep[balanceStepIndex]?.questions[11]?.resp || 0,
             nbChoco:
@@ -81,8 +85,49 @@ export class AlimentationComponent implements OnInit {
     );
   }
 
+  // onSubmit() {
+  //   const form = this.calcpersoForm4.getRawValue();
+  //   this.calcPersoService
+  //     .updateStepBalance(
+  //       'alimentation',
+  //       this.calcPersoService.parseAlimentationForm(form),
+  //       this.balanceId
+  //     )
+  //     .subscribe(
+  //       (data) => {
+  //         console.log(data);
+  //         this.updateService.sendUpdate('new alimentation field');
+  //         this.router.navigate(['/calculette-perso/questionnaire/achat']);
+  //       },
+  //       (err) => {
+  //         console.log(err);
+  //       }
+  //     );
+  // }
+
+  // onSubmit() {
+  //   const form = this.calcpersoForm4.getRawValue();
+  //   this.calcPersoService
+  //     .updateStepBalance(
+  //       'alimentation',
+  //       this.calcPersoService.parseAlimentationForm(form),
+  //       this.balanceId
+  //     )
+  //     .subscribe(
+  //       (data) => {
+  //         console.log(data);
+  //         this.updateService.sendUpdate('new alimentation field');
+  //         this.router.navigate(['/calculette-perso/questionnaire/achat']);
+  //       },
+  //       (err) => {
+  //         console.log(err);
+  //       }
+  //     );
+  // }
+
   onSubmit() {
     const form = this.calcpersoForm4.getRawValue();
+    console.log(form);
     this.calcPersoService
       .updateStepBalance(
         'alimentation',

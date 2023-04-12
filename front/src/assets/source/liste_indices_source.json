@@ -311,6 +311,15 @@
   },
   {
     "category": "achat",
+    "description": "L'achat de t-shirt émet en moyenne",
+    "value": 6000,
+    "unity": "g de CO2 / €",
+    "form_name": "nbTshirt",
+    "masse": 0.001,
+    "source_link": "https://www.bilans-ges.ademe.fr/fr/basecarbone/donnees-consulter/liste-element/categorie/295"
+  },
+  {
+    "category": "achat",
     "value": 110,
     "form_name": "prixConseils",
     "masse": 0.001,

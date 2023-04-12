@@ -4,7 +4,7 @@
 <form
   name="form"
   [formGroup]="this.calcpersoForm5"
-  (ngSubmit)="(f.form.valid)"
+  (ngSubmit)="f.form.valid && onSubmit()"
   #f="ngForm"
   novalidate
 >
@@ -21,7 +21,7 @@
             name="nbLivre"
             formControlName="nbLivre"
             min="0"
-            max="100"
+            max="100000"
           />
         </div>
       </div>
@@ -34,7 +34,7 @@
             name="nbTshirt"
             formControlName="nbTshirt"
             min="0"
-            max="100"
+            max="100000"
           />
         </div>
       </div>
@@ -47,7 +47,7 @@
             name="nbFourniture"
             formControlName="nbFourniture"
             min="0"
-            max="100"
+            max="100000"
           />
         </div>
       </div>
@@ -95,7 +95,22 @@
               name="prixComService"
               formControlName="prixComService"
               min="0"
-              max="100"
+              max="100000"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <label for="feuille">{{ "calcperso.tachatI7" | translate }}</label>
+          <div class="w-25">
+            <input
+              type="number"
+              class="form-control"
+              name="papier"
+              formControlName="papier"
+              min="0"
+              max="100000"
             />
           </div>
         </div>

@@ -4,7 +4,7 @@
 <form
   name="form"
   [formGroup]="this.calcpersoForm4"
-  (ngSubmit)="(f.form.valid)"
+  (ngSubmit)="f.form.valid && onSubmit()"
   #f="ngForm"
   novalidate
 >

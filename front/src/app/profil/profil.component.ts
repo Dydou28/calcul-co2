@@ -173,11 +173,12 @@ export class ProfilComponent implements OnInit {
       'prixConseils',
       'donsAsso',
       'prixComService',
+      'papier',
     ],
     datasets: [
       {
         label: 'T.CO2',
-        data: [0, 0, 0, 0, 0, 0],
+        data: [0, 0, 0, 0, 0, 0, 0],
       },
     ],
   };
@@ -327,6 +328,8 @@ export class ProfilComponent implements OnInit {
             this.achatChartData.datasets[0].data[4] = q.totalCarbon / 1000;
           } else if (q.label === 'prixComService') {
             this.achatChartData.datasets[0].data[5] = q.totalCarbon / 1000;
+          } else if (q.label === 'papier') {
+            this.achatChartData.datasets[0].data[6] = q.totalCarbon / 1000;
           }
         });
       }
@@ -387,11 +390,11 @@ export class ProfilComponent implements OnInit {
 
   // Ajout or Create Group
 
-  public groupForm: any = new FormGroup({
-    email: new FormControl('', [Validators.required]),
-    password: new FormControl('', [Validators.required]),
-  });
-  groupExports!: GroupExport[];
+  // public groupForm: any = new FormGroup({
+  //   email: new FormControl('', [Validators.required]),
+  //   password: new FormControl('', [Validators.required]),
+  // });
+  // groupExports!: GroupExport[];
 
   // ngOnInit(): void {
   //   console.log(window.localStorage.getItem('userId'))
@@ -453,25 +456,25 @@ export class ProfilComponent implements OnInit {
   //   });
   // }
 
-  public get group(): FormArray {
-    return this.groupForm.get('group') as FormArray;
-  }
+  // public get group(): FormArray {
+  //   return this.groupForm.get('group') as FormArray;
+  // }
 
-  public addGroup(): void {
-    this.group.push(new FormControl());
-  }
+  // public addGroup(): void {
+  //   this.group.push(new FormControl());
+  // }
 
-  onCreate() {
-    const form = this.groupForm.getRawValue();
-    this.authService.signin(form).subscribe((data) => {
-      if (data.status == true) {
-        this.userService.saveToken(data.accessToken);
-        this.userService.saveRefreshToken(data.refreshToken);
-        this.userService.saveUser(data.userId);
-        window.location.reload();
-      }
-      console.log(this.groupForm);
-      console.log(data);
-    });
-  }
+  // onCreate() {
+  //   const form = this.groupForm.getRawValue();
+  //   this.authService.signin(form).subscribe((data) => {
+  //     if (data.status == true) {
+  //       this.userService.saveToken(data.accessToken);
+  //       this.userService.saveRefreshToken(data.refreshToken);
+  //       this.userService.saveUser(data.userId);
+  //       window.location.reload();
+  //     }
+  //     console.log(this.groupForm);
+  //     console.log(data);
+  //   });
+  // }
 }

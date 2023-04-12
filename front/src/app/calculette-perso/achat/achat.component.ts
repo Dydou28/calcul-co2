@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CalcpersoService } from 'src/app/_services/calcperso.service';
+import { SourcesService } from 'src/app/_services/sources.service';
+import { serviceIndice } from 'src/app/_models/source.model';
 import { UpdateService } from 'src/app/_services/update.service';
 
 @Component({
@@ -19,6 +21,7 @@ export class AchatComponent implements OnInit {
     prixConseils: new FormControl(0, [Validators.required]),
     donsAsso: new FormControl(0, [Validators.required]),
     prixComService: new FormControl(0, [Validators.required]),
+    papier: new FormControl(0, [Validators.required]),
   });
 
   constructor(
@@ -26,6 +29,8 @@ export class AchatComponent implements OnInit {
     private router: Router,
     private updateService: UpdateService
   ) {}
+
+  conseil!: serviceIndice[];
 
   ngOnInit(): void {
     this.calcPersoService.getStepBalance('achat').subscribe(
@@ -53,6 +58,7 @@ export class AchatComponent implements OnInit {
               data.balanceStep[balanceStepIndex]?.questions[4]?.resp || 0,
             prixComService:
               data.balanceStep[balanceStepIndex]?.questions[5]?.resp || 0,
+            papier: data.balanceStep[balanceStepIndex]?.questions[6]?.resp || 0,
           });
         }
       },
@@ -64,6 +70,7 @@ export class AchatComponent implements OnInit {
 
   onSubmit() {
     const form = this.calcpersoForm5.getRawValue();
+    console.log(form);
     this.calcPersoService
       .updateStepBalance(
         'achat',
