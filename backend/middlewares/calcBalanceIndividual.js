@@ -169,6 +169,7 @@ calcNumeriqueBalance = async function (form, totalCarbon) {
           });
           form[form.length - 1].totalCarbon =
             row.resp * indiceType * indiceMass;
+          totalCarbon += form[form.length - 1].totalCarbon;
           console.log(form[form.length - 1].totalCarbon);
         }
         //pour matériel
@@ -180,8 +181,6 @@ calcNumeriqueBalance = async function (form, totalCarbon) {
 
           //récuperation des indices
           await indices.map((indice) => {
-            console.log("indice");
-            console.log(indice.form_name);
             if (indice.form_name == label[0]) {
               indiceType = indice.value;
               totalAns = indice.masse; //pour matériel on consider masse d'indice comme total année
@@ -192,8 +191,6 @@ calcNumeriqueBalance = async function (form, totalCarbon) {
           });
           //récuperation des indices de utilisation
           await indices.map((indice) => {
-            console.log("indice");
-            console.log(indice.form_name);
             if (indice.form_name == label[0] + "Utilisation") {
               kiloWatt = indice.value; //pour utilisation on consider value d'indice comme KiloWatt
               mass = indice.masse;
@@ -221,6 +218,7 @@ calcNumeriqueBalance = async function (form, totalCarbon) {
               fabricationCarbon + utilisationCarbon;
           }
         }
+        console.log(form);
         // LE RESULTAT EST RETOURNE EN KILO GRAMME DE CO2 PAR AN
         resultat({ form, totalCarbon });
       }

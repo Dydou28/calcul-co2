@@ -102,7 +102,7 @@ export class ProfilComponent implements OnInit {
       'Thalys',
       'Ter',
       'Bike',
-      'BVus',
+      'Bus',
       'Subway',
     ],
     datasets: [
@@ -119,20 +119,33 @@ export class ProfilComponent implements OnInit {
       responsive: true,
     };
 
-  // NUMERQUE
-  // private NumeriqueChartData = {
-  //   labels: [],
-  //   datasets: [
-  //     {
-  //       label: 'T.CO2',
-  //       data: []
-  //     },
-  //   ]
-  // };
-  // public doughnutChartNumeriqueData: ChartConfiguration<'doughnut'>['data'] = this.NumeriqueChartData;
-  // public doughnutChartNumeriqueOptions: ChartConfiguration<'doughnut'>['options'] = {
-  //   responsive: true,
-  // };
+  // NUMERIQUE
+  private numeriqueChartData = {
+    labels: [
+      'Ecran',
+      'Clavier',
+      'Ordinateur',
+      'Smartphone',
+      'Tablette',
+      'Imprimante',
+      'Objet connecté',
+      'Ligne internet à domicile',
+      'Ligne mobile',
+      'Ligne internet au bureau',
+    ],
+    datasets: [
+      {
+        label: 'T.CO2',
+        data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      },
+    ],
+  };
+  public doughnutChartNumeriqueData: ChartConfiguration<'doughnut'>['data'] =
+    this.numeriqueChartData;
+  public doughnutChartNumeriqueOptions: ChartConfiguration<'doughnut'>['options'] =
+    {
+      responsive: true,
+    };
 
   // ALIMENTATION
   private alimentationChartData = {
@@ -282,6 +295,30 @@ export class ProfilComponent implements OnInit {
       } else if (s.label === 'numerique') {
         this.lastBalanceChartData.datasets[0].data[2] = s.totalCarbon / 1000;
         this.TotalCarbon.all += s.totalCarbon / 1000;
+        s.questions.map((q: any) => {
+          var label = q.label.split(' | ');
+          if (label[0] == 'Ecran') {
+            this.numeriqueChartData.datasets[0].data[0] = q.totalCarbon / 1000;
+          } else if (label[0] == 'Clavier') {
+            this.numeriqueChartData.datasets[0].data[1] = q.totalCarbon / 1000;
+          } else if (label[0] == 'Ordinateur') {
+            this.numeriqueChartData.datasets[0].data[2] = q.totalCarbon / 1000;
+          } else if (label[0] == 'Smartphone') {
+            this.numeriqueChartData.datasets[0].data[3] = q.totalCarbon / 1000;
+          } else if (label[0] == 'Tablette') {
+            this.numeriqueChartData.datasets[0].data[4] = q.totalCarbon / 1000;
+          } else if (label[0] == 'Imprimante') {
+            this.numeriqueChartData.datasets[0].data[5] = q.totalCarbon / 1000;
+          } else if (label[0] == 'Objet connecté') {
+            this.numeriqueChartData.datasets[0].data[6] = q.totalCarbon / 1000;
+          } else if (label[0] == 'internetDomicle') {
+            this.numeriqueChartData.datasets[0].data[7] = q.totalCarbon / 1000;
+          } else if (label[0] == 'internetMobile') {
+            this.numeriqueChartData.datasets[0].data[8] = q.totalCarbon / 1000;
+          } else if (label[0] == 'internetBureau') {
+            this.numeriqueChartData.datasets[0].data[9] = q.totalCarbon / 1000;
+          }
+        });
       } else if (s.label === 'alimentation') {
         this.lastBalanceChartData.datasets[0].data[3] = s.totalCarbon / 1000;
         this.TotalCarbon.all += s.totalCarbon / 1000;
@@ -309,7 +346,7 @@ export class ProfilComponent implements OnInit {
           } else if (q.label === 'prepaCafe') {
             this.alimentationChartData.datasets[0].data[10] = q.totalCarbon;
           } else if (q.label === 'nbChoco') {
-            this.alimentationChartData.datasets[0].data[12] = q.totalCarbon;
+            this.alimentationChartData.datasets[0].data[11] = q.totalCarbon;
           }
         });
       } else if (s.label === 'achat') {
@@ -317,19 +354,19 @@ export class ProfilComponent implements OnInit {
         this.TotalCarbon.all += s.totalCarbon / 1000;
         s.questions.map((q: any) => {
           if (q.label === 'nbLivre') {
-            this.achatChartData.datasets[0].data[0] = q.totalCarbon / 1000;
+            this.achatChartData.datasets[0].data[0] = q.totalCarbon;
           } else if (q.label === 'nbTshirt') {
-            this.achatChartData.datasets[0].data[1] = q.totalCarbon / 1000;
+            this.achatChartData.datasets[0].data[1] = q.totalCarbon;
           } else if (q.label === 'nbFourniture') {
-            this.achatChartData.datasets[0].data[2] = q.totalCarbon / 1000;
+            this.achatChartData.datasets[0].data[2] = q.totalCarbon;
           } else if (q.label === 'prixConseils') {
-            this.achatChartData.datasets[0].data[3] = q.totalCarbon / 1000;
+            this.achatChartData.datasets[0].data[3] = q.totalCarbon;
           } else if (q.label === 'donsAsso') {
-            this.achatChartData.datasets[0].data[4] = q.totalCarbon / 1000;
+            this.achatChartData.datasets[0].data[4] = q.totalCarbon;
           } else if (q.label === 'prixComService') {
-            this.achatChartData.datasets[0].data[5] = q.totalCarbon / 1000;
+            this.achatChartData.datasets[0].data[5] = q.totalCarbon;
           } else if (q.label === 'papier') {
-            this.achatChartData.datasets[0].data[6] = q.totalCarbon / 1000;
+            this.achatChartData.datasets[0].data[6] = q.totalCarbon;
           }
         });
       }

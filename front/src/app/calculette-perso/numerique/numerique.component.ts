@@ -24,7 +24,7 @@ export class NumeriqueComponent implements OnInit {
     category: new FormControl([Validators.required]),
     dataNb: new FormControl(0, [Validators.required]),
     frequency: new FormControl(0, [Validators.required]),
-    deviceStatus: new FormControl('non-reconditionne', [Validators.required]),
+    deviceStatus: new FormControl('non', [Validators.required]),
   });
 
   public calcpersoForm3bis = new FormGroup({

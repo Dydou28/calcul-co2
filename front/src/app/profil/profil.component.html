@@ -84,6 +84,20 @@
               <div class="chart-container">
                 <canvas
                   baseChart
+                  [data]="doughnutChartNumeriqueData"
+                  [options]="doughnutChartNumeriqueOptions"
+                  [plugins]="[]"
+                  [legend]="true"
+                  [type]="'doughnut'"
+                  class="global-doughnut"
+                >
+                </canvas>
+              </div>
+            </ng-template>
+            <ng-template ngbSlide>
+              <div class="chart-container">
+                <canvas
+                  baseChart
                   [data]="doughnutChartAlimentationData"
                   [options]="doughnutChartAlimentationOptions"
                   [plugins]="[]"

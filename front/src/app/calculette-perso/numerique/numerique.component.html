@@ -204,13 +204,13 @@
           formControlName="category"
         >
           <option selected>Selectionnez</option>
-          <option value="21,5 pouces">
+          <option value="ecranPetit">
             {{ "calcperso.numT5A" | translate }}
           </option>
-          <option value="23,8 pouces">
+          <option value="ecranMoyen">
             {{ "calcperso.numT5B" | translate }}
           </option>
-          <option value="geant">
+          <option value="ecranGeant">
             {{ "calcperso.numT5C" | translate }}
           </option>
         </select>
@@ -218,13 +218,13 @@
       <div *ngIf="selectNumerique.value == 'Ordinateur'">
         <label for="">{{ "calcperso.numT5" | translate }}</label>
         <select class="form-select" name="category" formControlName="category">
-          <option value="Fixe" selected>
+          <option value="fixeBureautique" selected>
             {{ "calcperso.numT5D" | translate }}
           </option>
-          <option value="Portable">
+          <option value="ordinateurPortable">
             {{ "calcperso.numT5E" | translate }}
           </option>
-          <option value="Haute Performance / Gamer">
+          <option value="hautePerformance">
             {{ "calcperso.numT5F" | translate }}
           </option>
         </select>
@@ -232,16 +232,16 @@
       <div *ngIf="selectNumerique.value == 'Smartphone'">
         <label for="">{{ "calcperso.numT5" | translate }}</label>
         <select class="form-select" name="category" formControlName="category">
-          <option value="Feature phone" selected>
+          <option value="featurePhone" selected>
             {{ "calcperso.numT5G" | translate }}
           </option>
-          <option value="Smart phone small 5pouces">
+          <option value="petit5pouces">
             {{ "calcperso.numT5H" | translate }}
           </option>
-          <option value="Smart phone 5pouces">
+          <option value="moyen5pouces">
             {{ "calcperso.numT5I" | translate }}
           </option>
-          <option value="Smart phone large 5pouces">
+          <option value="grand5pouces">
             {{ "calcperso.numT5J" | translate }}
           </option>
         </select>
@@ -249,13 +249,13 @@
       <div *ngIf="selectNumerique.value == 'Imprimante'">
         <label for="">{{ "calcperso.numT5" | translate }}</label>
         <select class="form-select" name="category" formControlName="category">
-          <option value="Jet d'encre" selected>
+          <option value="jetDencre" selected>
             {{ "calcperso.numT5L" | translate }}
           </option>
-          <option value="Laser">
+          <option value="laser">
             {{ "calcperso.numT5M" | translate }}
           </option>
-          <option value="Multifonctionnel jet d'encre">
+          <option value="multiFoncitonJetDencre">
             {{ "calcperso.numT5N" | translate }}
           </option>
         </select>
@@ -263,19 +263,19 @@
       <div *ngIf="selectNumerique.value == 'Objet connecté'">
         <label for="">{{ "calcperso.numT5" | translate }}</label>
         <select class="form-select" name="category" formControlName="category">
-          <option value="Montre connecté" selected>
+          <option value="montre" selected>
             {{ "calcperso.numT5O" | translate }}
           </option>
-          <option value="Enceinte">
+          <option value="enceinte">
             {{ "calcperso.numT5P" | translate }}
           </option>
-          <option value="Caméra">
+          <option value="camera">
             {{ "calcperso.numT5Q" | translate }}
           </option>
-          <option value="Thermostat">
+          <option value="thermostat">
             {{ "calcperso.numT5R" | translate }}
           </option>
-          <option value="Alarme">
+          <option value="alarme">
             {{ "calcperso.numT5S" | translate }}
           </option>
         </select>
@@ -306,7 +306,7 @@
           type="radio"
           name="deviceStatus"
           formControlName="deviceStatus"
-          value="reconditionné"
+          value="oui"
         />
         <label class="form-check-label" for="flexRadioDefault1">
           {{ "calcperso.yes" | translate }}
@@ -318,7 +318,7 @@
           type="radio"
           name="deviceStatus"
           formControlName="deviceStatus"
-          value="non-reconditionné"
+          value="non"
           checked="true"
         />
         <label class="form-check-label" for="flexRadioDefault2">

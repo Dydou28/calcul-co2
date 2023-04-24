@@ -209,7 +209,12 @@ exports.updateStepBalance = (req, res, next) => {
           );
         } else if (stepName == "numerique") {
           console.log("dylan");
-          resCalc = await calcBalanceIndividual.calcNumeriqueBalance(form);
+          resCalc = await calcBalanceIndividual.calcNumeriqueBalance(
+            form,
+            balanceStepIndex >= 0
+              ? balance.steps[balanceStepIndex].totalCarbon
+              : 0
+          );
         } else if (stepName == "alimentation") {
           console.log("dylan");
           resCalc = await calcBalanceIndividual.calcAlimentationBalance(form);
