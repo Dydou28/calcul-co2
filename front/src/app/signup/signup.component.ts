@@ -17,7 +17,7 @@ function ValidatorPass(control: FormControl) {
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.scss']
+  styleUrls: ['./signup.component.scss'],
 })
 export class SignupComponent implements OnInit {
   public hide = true;
@@ -33,24 +33,18 @@ export class SignupComponent implements OnInit {
     password2: new FormControl('', [Validators.required, ValidatorPass]),
   });
 
-  constructor(private authService: AuthService,
-    private router: Router) { }
+  constructor(private authService: AuthService, private router: Router) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   changeHideVisi() {
-    if (this.hide === true)
-      this.hide = false;
-    else
-      this.hide = true;
+    if (this.hide === true) this.hide = false;
+    else this.hide = true;
   }
 
   changeHideVisi2() {
-    if (this.hide2 === true)
-      this.hide2 = false;
-    else
-      this.hide2 = true;
+    if (this.hide2 === true) this.hide2 = false;
+    else this.hide2 = true;
   }
 
   onSubmit() {
@@ -58,19 +52,16 @@ export class SignupComponent implements OnInit {
     if (form.password !== form.password2) {
       this.errorResponse = 'les mots de passe ne correspondent pas';
     } else {
-      this.authService
-        .signup(form)
-        .subscribe(
-          (data) => {
-            // console.log(data);
-            this.errorResponse = '';
-            this.router.navigate(['/login']);
-          },
-          (err) => {
-            this.errorResponse = err.error.message;
-          }
-        );
+      this.authService.signup(form).subscribe(
+        (data) => {
+          // console.log(data);
+          this.errorResponse = '';
+          this.router.navigate(['/login']);
+        },
+        (err) => {
+          this.errorResponse = err.error.message;
+        }
+      );
     }
   }
-
 }
