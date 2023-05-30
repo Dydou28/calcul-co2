@@ -9,8 +9,10 @@ import {
 import { UserService } from '../_services/user.service';
 import { AuthService } from '../_services/auth.service';
 import { CalcpersoService } from '../_services/calcperso.service';
-import { GroupService } from '../_services/group.service';
+import { GroupeService } from '../_services/group.service';
 import { ChartConfiguration, ChartOptions, ChartType } from 'chart.js';
+import { forkJoin } from 'rxjs';
+import { ResolutionService } from '../_services/resolution.service';
 
 @Component({
   selector: 'app-profil',
@@ -18,6 +20,10 @@ import { ChartConfiguration, ChartOptions, ChartType } from 'chart.js';
   styleUrls: ['./profil.component.scss'],
 })
 export class ProfilComponent implements OnInit {
+  currentGroupe: any;
+
+  userId: any = localStorage.getItem('userId');
+  groupes: any[] = [];
   public balance: any = [];
   public lastBalance: any = {};
 
@@ -212,17 +218,89 @@ export class ProfilComponent implements OnInit {
   };
 
   @ViewChild('carousel', { static: true }) carousel!: NgbCarousel;
+  errorResponse: string | undefined;
+  totalBalance: any;
+  nomGroupe: any;
+  selectedGroupName: any;
+  groupeName: any;
+  groupForm = new FormGroup({
+    groupName: new FormControl('', [Validators.required]),
+  });
+  groupe: any;
+  nbPersonnes: any;
+  average: any;
+  percentage: any;
+  lastBal: any;
+  resolutions: any;
+  username: any;
+  newResolutionSubject: any;
+  newResolutionLabel: any;
 
   constructor(
     private calcPersoService: CalcpersoService,
-    private groupService: GroupService,
+    private groupeService: GroupeService,
     private authService: AuthService,
-    private userService: UserService
+    private userService: UserService,
+    private resolutionService: ResolutionService
   ) {}
 
   ngOnInit(): void {
     this.carousel.pause();
     this.getAllBalance();
+    this.groupeService.getCurrentGroupe(this.userId).subscribe((data) => {
+      console.log(this.userId);
+      console.log(data);
+      this.nomGroupe = data.groupe.name;
+      this.nbPersonnes = data.groupe.users.length;
+    });
+    this.resolutionService.readResolution(this.userId).subscribe((data) => {
+      this.resolutions = data.resolutions.filter(
+        (resolution: { userId: string }) => resolution.userId === this.userId
+      );
+    });
+    // s'abonner aux nouvelles résolutions
+    this.resolutionService.onNewResolution().subscribe((resolution) => {
+      // ajouter la nouvelle résolution à la liste
+      this.resolutions.push(resolution);
+    });
+    this.getUser();
+    //this.onSubmit();
+    this.getLastBalance();
+    this.getAllGroupes();
+    this.getTotalBalance();
+    this.groupeService.getGroupe(this.userId).subscribe(
+      (data) => {
+        console.log(data);
+
+        // Chercher l'objet qui contient l'utilisateur en question
+        const groupe = data.groupes.find((g: { users: string | string[] }) =>
+          g.users.includes(this.userId)
+        );
+        // console.log(groupe._id);
+
+        if (groupe) {
+          // Récupérer le nom du groupe
+          const groupName = groupe.name;
+          console.log(groupe);
+          // Afficher le nom du groupe dans la console
+          this.groupeName = groupName;
+        } else {
+          const mess = "L'utilisateur n'est membre d'aucun groupe";
+          console.log("L'utilisateur n'est membre d'aucun groupe");
+          this.groupeName = mess;
+        }
+      },
+      (err) => {
+        console.log(err);
+        // Gérer les erreurs ici
+      }
+    );
+  }
+  getLastBalance() {
+    this.calcPersoService.getLastBalance(this.userId).subscribe((data) => {
+      console.log(data.balance[0].totalBalance);
+      this.lastBal = data.balance[0].totalBalance;
+    });
   }
 
   getAllBalance() {
@@ -233,6 +311,12 @@ export class ProfilComponent implements OnInit {
         this.getLastBalanceDetailData();
         this.getAllBalanceData();
       }
+    });
+  }
+  getAllGroupes() {
+    this.groupeService.getAllGroupes().subscribe((data) => {
+      this.groupes = data.groupes;
+      console.log(data.groupes);
     });
   }
 
@@ -424,94 +508,240 @@ export class ProfilComponent implements OnInit {
       this.togglePaused();
     }
   }
+  /*  ici */ onSubmit() {
+    const groupNameControl = this.groupForm.getRawValue();
+    const gpName = groupNameControl.groupName; // on recupere la valeur et nom l'objet groupe du formulaire
 
-  // Ajout or Create Group
+    if (groupNameControl) {
+      //this.id = this.route.snapshot.paramMap.get('id');
+      // const userId= this.authService.getUserId();
+      const userId = localStorage.getItem('userId'); // ici on recupere localement la valeur de l'id stockée dans le cache du navigateur
+      console.log(userId);
+      this.groupeService.createGroupe(gpName, userId).subscribe(
+        (data) => {
+          console.log(data);
+          this.groupes.push(data.groupe);
+        },
+        (err) => {
+          console.log(err);
+          this.errorResponse = err.error.message;
+        }
+      );
 
-  // public groupForm: any = new FormGroup({
-  //   email: new FormControl('', [Validators.required]),
-  //   password: new FormControl('', [Validators.required]),
-  // });
-  // groupExports!: GroupExport[];
+      /*const groupName = groupNameControl.value;
+      const userId = this.authService.getUserId();
+      this.groupeService.createGroupe(groupName).subscribe((result) => {
+        console.log(result);
+      });*/
+    }
+  }
+  /*  ici */ onJoinGroupe() {
+    location.reload();
+    const userId = localStorage.getItem('userId') || '';
+    const currentUserGroupe = this.groupes.find((g) =>
+      g.users.includes(userId)
+    );
+    console.log(currentUserGroupe);
+    const groupeId = this.selectedGroupName; // récupère l'id du groupe sélectionné dans le dropdown
+    const selectedGroupe = this.groupes.find(
+      //il récupère l'objet groupe correspondant à l'id sélectionn
+      (groupe) => groupe._id === groupeId
+    );
+    if (selectedGroupe) {
+      console.log(selectedGroupe.users);
+      /* const nbPersonnes = selectedGroupe.users.length; //Nombre d'utilisateur present dans le groupe
+      this.nbPersonnes = nbPersonnes;*/
 
-  // ngOnInit(): void {
-  //   console.log(window.localStorage.getItem('userId'))
-  //   if (window.localStorage.getItem('userId'))
-  // }
+      this.nomGroupe = selectedGroupe.name;
+    }
 
-  // getAllGroupData() {
-  //   this.group.map((any) => {
-  //     if (b.terminated == true) {
-  //       this.push(new Date().toDateString());
-  //     }
-  //   });
-  // }
+    const currentGroupeId = currentUserGroupe ? currentUserGroupe._id : null;
+    console.log(groupeId);
+    console.log(currentGroupeId);
+    if (currentGroupeId === groupeId) {
+      console.log("L'utilisateur est déjà présent dans ce groupe.");
+      const message = 'Vous êtes déjà dans le groupe';
+      //this.message = message;
 
-  // getAllGroup() {
-  //   this.groupService.getAllGroup().subscribe((data: any) => {
-  //     if (data.status === true) {
-  //       console.log(data);
-  //       this.group = data.group;
-  //     }
-  //   });
-  // }
+      return;
+    }
 
-  // getGroup() {
-  //   this.groupService.getAllGroup().subscribe((data: any) => {
-  //     if (data.status === true) {
-  //       console.log(data);
-  //       this.group = data.group;
-  //     }
-  //   });
-  // }
+    // L'utilisateur n'est pas déjà présent dans ce groupe, on peut l'ajouter
+    if (currentUserGroupe) {
+      // Retirer l'utilisateur de son ancien groupe
+      this.groupeService.exitGroupe(userId).subscribe(
+        (data) => {
+          console.log(data);
+          this.joinGroupe(userId, groupeId);
+        },
+        (err) => {
+          console.log(err);
+          // Gérer les erreurs icid
+        }
+      );
+    } else {
+      // Ajouter l'utilisateur au nouveau groupe directement
+      this.joinGroupe(userId, groupeId);
+    }
+  }
+  joinGroupe(userId: string, groupeId: string) {
+    const currentUserGroupe = this.groupes.find((g) =>
+      g.users.includes(userId)
+    );
+    if (currentUserGroupe) {
+      // Retirer l'utilisateur de son ancien groupe
+      this.groupeService.exitGroupe(userId).subscribe(
+        (data) => {
+          console.log(data);
+          this.groupeService.joinGroupe(userId, groupeId).subscribe(
+            (data) => {
+              console.log(data);
+              const nbPersonnes = data.result.users.length;
+              this.nbPersonnes = nbPersonnes;
+            },
+            (err) => {
+              console.log(err);
+              // Gestion des erreurs
+            }
+          );
+        },
+        (err) => {
+          console.log(err);
+          // Gérer les erreurs ici
+        }
+      );
+    } else {
+      // Ajouter l'utilisateur au nouveau groupe directement
+      this.groupeService.joinGroupe(userId, groupeId).subscribe(
+        (data) => {
+          console.log(data);
+          const nbPersonnes = data.result.users.length;
+          //this.nbPersonnes = nbPersonnes;
+        },
+        (err) => {
+          console.log(err);
+          // Gestion des erreurs
+        }
+      );
+    }
+  }
 
-  // createGroup() {
-  //   this.groupService.getAllGroup().subscribe((data: any) => {
-  //     if (data.status === true) {
-  //       console.log(data);
-  //       this.group = data.group;
-  //     }
-  //   });
-  // }
+  getTotalBalance() {
+    this.totalBalance = 0;
+    this.groupeService.getCurrentGroupe(this.userId).subscribe((data1) => {
+      console.log(data1.groupe);
+      const length = data1.groupe.users.length;
+      const observables = [];
 
-  // joinGroup() {
-  //   this.groupService.getAllGroup().subscribe((data: any) => {
-  //     if (data.status === true) {
-  //       console.log(data);
-  //       this.group = data.group;
-  //     }
-  //   });
+      for (let index = 0; index < length; index++) {
+        const user = data1.groupe.users[index];
+        const observable = this.calcPersoService.getLastBalance(user);
+        observables.push(observable);
+      }
 
-  //   // button.addEventListener('click', () => this.join);
-  // }
+      forkJoin(observables).subscribe((results) => {
+        this.totalBalance = results.reduce((sum, data) => {
+          const balance = data.balance[0].totalBalance;
+          return sum + balance;
+        }, 0);
 
-  // exitGroup() {
-  //   this.groupService.getAllGroup().subscribe((data: any) => {
-  //     if (data.status === true) {
-  //       console.log(data);
-  //       this.group = data.group;
-  //     }
-  //   });
-  // }
+        console.log(this.totalBalance); // Somme totale des balances de tous les utilisateurs
 
-  // public get group(): FormArray {
-  //   return this.groupForm.get('group') as FormArray;
-  // }
+        // Calculer la moyenne de totalBalance
+        this.average = this.totalBalance / length;
+        console.log(this.average); // Moyenne des balances de tous les utilisateurs
+        //console.log(this.lastBal);
 
-  // public addGroup(): void {
-  //   this.group.push(new FormControl());
-  // }
+        if (this.average === 0) {
+          // Gérer le cas où this.average est égal à zéro
+          this.percentage = 0; // Ou une autre valeur appropriée selon votre logique
+        } else {
+          this.percentage =
+            ((this.average - this.lastBal) / this.average) * 100;
+        }
 
-  // onCreate() {
-  //   const form = this.groupForm.getRawValue();
-  //   this.authService.signin(form).subscribe((data) => {
-  //     if (data.status == true) {
-  //       this.userService.saveToken(data.accessToken);
-  //       this.userService.saveRefreshToken(data.refreshToken);
-  //       this.userService.saveUser(data.userId);
-  //       window.location.reload();
-  //     }
-  //     console.log(this.groupForm);
-  //     console.log(data);
-  //   });
-  // }
+        console.log(this.percentage);
+
+        // Affecter la valeur calculée à la variable totalBalance ici
+        this.totalBalance = this.totalBalance;
+      });
+    });
+  }
+
+  getAverage() {
+    console.log(this.getTotalBalance());
+  }
+  supprimerResolution(resolutionId: string) {
+    const userId = localStorage.getItem('userId') || '';
+    this.resolutionService.deleteResolution(resolutionId).subscribe(
+      (res) => {
+        console.log('supprimer');
+        // Supprimer la résolution du tableau
+        this.resolutions = this.resolutions.filter(
+          (r: { _id: string }) => r._id !== resolutionId
+        );
+        console.log(res);
+      },
+      (err) => {
+        // Gérer l'erreur
+        console.log(err);
+      }
+    );
+  }
+
+  validerResolution(resolutionId: string, validate: boolean) {
+    this.resolutionService.valideResolution(resolutionId, validate).subscribe(
+      (res) => {
+        console.log(res);
+        /*this.resolutions = this.resolutions.filter(
+          (r) => r._id !== resolutionId
+        );*/
+      },
+      (err) => {
+        // Gérer l'erreur
+        console.log(err);
+      }
+    );
+    location.reload();
+  }
+  /*  ici */ onReadResolution() {
+    const userId = localStorage.getItem('userId') || '';
+    this.resolutionService.readResolution(userId).subscribe(
+      (res) => {
+        // Gérer la réponse réussie du serveur
+
+        console.log(res.resolutions[0]);
+      },
+      (err) => {
+        // Gérer l'erreur
+        console.log(err);
+      }
+    );
+  }
+  /*  ici */ onCreateResolution(): void {
+    const label = this.newResolutionLabel;
+    const userId = localStorage.getItem('userId') || '';
+    this.resolutionService.createResolution(userId, label).subscribe(
+      (res) => {
+        //  location.reload();
+        console.log(res.resolution.label);
+        // Ajouter la nouvelle résolution à l'array resolutions
+        this.resolutions.push(res.resolution);
+        // Émettre la nouvelle résolution via le Subject newResolutionSubject
+        this.newResolutionSubject.next(res.resolution);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
+  /*********************************ESSAI ******************************/
+
+  getUser() {
+    const userId = localStorage.getItem('userId') || '';
+    this.userService.getUser(userId).subscribe((data) => {
+      console.log(data.username);
+      this.username = data.username;
+    });
+  }
 }
