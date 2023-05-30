@@ -4,8 +4,8 @@
       <div class="left-1">
         <div class="content-left">
           <h2>
-            <span class="text-orange">Paul-adrien</span>, voici votre bilan
-            carbone
+            <span class="text-orange"> {{ username }}</span
+            >, voici votre bilan carbone
           </h2>
           <h4>Impact Personnel:</h4>
           <p class="CO2-text">
@@ -137,45 +137,59 @@
                   <label for="exampleFormControlInput1" class="form-label"
                     >Join a groupe</label
                   >
-                  <input
-                    type="email"
-                    class="form-control"
-                    id="exampleFormControlInput1"
-                    placeholder=""
-                  />
+                  <select
+                    class="form-select"
+                    aria-label="Sélectionnez un groupe"
+                    [(ngModel)]="selectedGroupName"
+                  >
+                    <option disabled>Sélectionnez un groupe</option>
+                    <ng-container *ngFor="let groupe of groupes">
+                      <option value="{{ groupe._id }}">
+                        {{ groupe.name }}
+                      </option>
+                    </ng-container>
+                  </select>
+
                   <button
                     style="margin-top: 5px"
                     class="btn btn-primary btn-sm"
+                    (click)="onJoinGroupe()"
                   >
-                    Ajouter
+                    Rejoindre
                   </button>
                 </div>
               </div>
             </div>
+
             <div class="side-groupes">
               <div class="content-groupes">
-                <div class="mb-3" style="margin-left: 10px">
-                  <label for="exampleFormControlInput1" class="form-label"
-                    >Create a groupe</label
-                  >
-                  <input
-                    type="email"
-                    class="form-control"
-                    id="exampleFormControlInput1"
-                    placeholder=""
-                  />
-                  <button
-                    style="margin-top: 5px"
-                    class="btn btn-primary btn-sm"
-                  >
-                    Ajouter
-                  </button>
-                </div>
+                <form [formGroup]="groupForm" (ngSubmit)="onSubmit()">
+                  <div class="mb-3" style="margin-left: 10px">
+                    <label for="groupName" class="form-label"
+                      >Create a group</label
+                    >
+                    <input
+                      type="text"
+                      formControlName="groupName"
+                      id="groupName"
+                      class="form-control"
+                      placeholder=""
+                    />
+                    <button
+                      id="addButton"
+                      type="submit"
+                      style="margin-top: 5px"
+                      class="btn btn-primary btn-sm"
+                    >
+                      Add
+                    </button>
+                  </div>
+                </form>
               </div>
             </div>
           </div>
           <div class="groupes-title">
-            <h3>Votre groupe: Test Groupe</h3>
+            <h3>Votre groupe: {{ nomGroupe }}</h3>
           </div>
           <div class="wrapper-groupes">
             <div class="side-groupes">
@@ -185,7 +199,8 @@
                 </div>
                 <div class="groupes-text">
                   <p class="CO2-text-groupes">
-                    <span class="text-orange">7,2 </span>t.CO2
+                    <span class="text-orange">{{ totalBalance | number }}</span>
+                    t.CO2
                   </p>
                 </div>
                 <div class="groupes-text">
@@ -193,7 +208,8 @@
                 </div>
                 <div class="groupes-text">
                   <p class="CO2-text-groupes">
-                    <span class="text-orange">7,2 </span>t.CO2/ participant
+                    <span class="text-orange"> {{ average | number }} </span
+                    >t.CO2/ participant
                   </p>
                 </div>
               </div>
@@ -205,7 +221,8 @@
                 </div>
                 <div class="groupes-text-2">
                   <p class="CO2-text-groupes">
-                    <span class="text-orange">1 </span> participant(s)
+                    <span class="text-orange">{{ nbPersonnes }}</span>
+                    participant(s)
                   </p>
                 </div>
                 <div class="groupes-text-2">
@@ -213,7 +230,8 @@
                 </div>
                 <div class="groupes-text-2">
                   <p class="CO2-text-groupes">
-                    <span class="text-orange">X </span>% de plus
+                    <span class="text-orange"> {{ percentage | number }}</span
+                    >% de plus
                   </p>
                 </div>
               </div>
@@ -236,12 +254,14 @@
                       >
                         Voir les propositions de résolutions
                       </button>
-                      <form action="">
+                      <form (submit)="onCreateResolution()">
                         <div class="mb-3">
                           <label for="exampleInputEmail1" class="form-label"
                             >Nouvelle résolution:</label
                           >
                           <textarea
+                            [(ngModel)]="newResolutionLabel"
+                            name="newResolutionLabel"
                             type="text"
                             class="form-control"
                             id="exampleInputEmail1"
@@ -256,135 +276,46 @@
                     <div class="content-right-3">
                       <table class="table table-sm">
                         <tbody>
-                          <tr>
+                          <tr *ngFor="let resolution of resolutions">
                             <td>
                               <p class="resolution-text">
-                                ceci est un test de résolution
+                                {{ resolution.label }}
                               </p>
                             </td>
                             <td>
-                              <button class="success-btn">
-                                <span class="alert-icon">
-                                  <span class="visually-hidden">success</span>
-                                </span>
-                              </button>
+                              <ng-container *ngIf="!resolution.state">
+                                <button
+                                  class="success-btn"
+                                  (click)="
+                                    validerResolution(resolution._id, true)
+                                  "
+                                >
+                                  <span class="success-btn">
+                                    <span class="visually-hidden">success</span>
+                                  </span>
+                                </button>
+                              </ng-container>
+
+                              <ng-container *ngIf="resolution.state">
+                                <button
+                                  class="btn-close"
+                                  (click)="
+                                    validerResolution(resolution._id, false)
+                                  "
+                                >
+                                  <span class="">
+                                    <span class="visually-hidden">danger</span>
+                                  </span>
+                                </button>
+                              </ng-container>
                             </td>
+
                             <td>
-                              <button type="button" class="btn-close">
-                                <span class="visually-hidden">Close</span>
-                              </button>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <p class="resolution-text">
-                                ceci est un test de résolution
-                              </p>
-                            </td>
-                            <td>
-                              <button class="success-btn">
-                                <span class="alert-icon">
-                                  <span class="visually-hidden">success</span>
-                                </span>
-                              </button>
-                            </td>
-                            <td>
-                              <button type="button" class="btn-close">
-                                <span class="visually-hidden">Close</span>
-                              </button>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <p class="resolution-text">
-                                ceci est un test de résolution
-                              </p>
-                            </td>
-                            <td>
-                              <button class="success-btn">
-                                <span class="alert-icon">
-                                  <span class="visually-hidden">success</span>
-                                </span>
-                              </button>
-                            </td>
-                            <td>
-                              <button type="button" class="btn-close">
-                                <span class="visually-hidden">Close</span>
-                              </button>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <p class="resolution-text">
-                                ceci est un test de résolution
-                              </p>
-                            </td>
-                            <td>
-                              <button class="success-btn">
-                                <span class="alert-icon">
-                                  <span class="visually-hidden">success</span>
-                                </span>
-                              </button>
-                            </td>
-                            <td>
-                              <button type="button" class="btn-close">
-                                <span class="visually-hidden">Close</span>
-                              </button>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <p class="resolution-text">
-                                ceci est un test de résolution
-                              </p>
-                            </td>
-                            <td>
-                              <button class="success-btn">
-                                <span class="alert-icon">
-                                  <span class="visually-hidden">success</span>
-                                </span>
-                              </button>
-                            </td>
-                            <td>
-                              <button type="button" class="btn-close">
-                                <span class="visually-hidden">Close</span>
-                              </button>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <p class="resolution-text">
-                                ceci est un test de résolution
-                              </p>
-                            </td>
-                            <td>
-                              <button class="success-btn">
-                                <span class="alert-icon">
-                                  <span class="visually-hidden">success</span>
-                                </span>
-                              </button>
-                            </td>
-                            <td>
-                              <button type="button" class="btn-close">
-                                <span class="visually-hidden">Close</span>
-                              </button>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <p class="resolution-text">
-                                ceci est un test de résolution
-                              </p>
-                            </td>
-                            <td>
-                              <button class="success-btn">
-                                <span class="alert-icon">
-                                  <span class="visually-hidden">success</span>
-                                </span>
-                              </button>
-                            </td>
-                            <td>
-                              <button type="button" class="btn-close">
+                              <button
+                                type="button"
+                                class="btn-close"
+                                (click)="supprimerResolution(resolution._id)"
+                              >
                                 <span class="visually-hidden">Close</span>
                               </button>
                             </td>

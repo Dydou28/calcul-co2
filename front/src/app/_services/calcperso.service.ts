@@ -38,8 +38,13 @@ export class CalcpersoService {
       httpOptions
     );
   }
-
-  getAllBalance() {
+  getLastBalance(userId: any): Observable<any> {
+    return this.http.get(
+      environment.AUTH_API + 'user/' + userId + '/balance/individual/last',
+      httpOptions
+    );
+  }
+  getAllBalance(): Observable<any> {
     const userId = window.localStorage.getItem('userId');
     return this.http.get(
       environment.AUTH_API + 'user/' + userId + '/balance/individual',

@@ -8,11 +8,13 @@ const httpOptions = {
 };
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
-
-  constructor(public http: HttpClient) { }
+  getToken() {
+    throw new Error('Method not implemented.');
+  }
+  constructor(public http: HttpClient) {}
 
   signup(form: any): Observable<any> {
     return this.http.post(
@@ -33,7 +35,7 @@ export class AuthService {
       environment.AUTH_API + 'user/authenticate',
       {
         email: form.email,
-        password: form.password
+        password: form.password,
       },
       httpOptions
     );
